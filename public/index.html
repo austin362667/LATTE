@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <title>Home</title>
+        <style>
+            @import url('./base.css');
+        </style>
+    </head>
+    <body>
+        <div class="navbar">
+            <a href="./index.html" >Home</a>
+            <a href="#post" onclick="post.start()">Post</a>
+            <a href="#news" onclick="list.start()">News</a>
+            <div class="dropdown">
+              <button class="dropbtn">MyArea
+              </button>
+              <div class="dropdown-content">
+                <a href="#login" onclick="login.start()">Login</a>
+                <a href="#logout" onclick="logout.start()">Logout</a>
+                <a href="#signup" onclick="signup.start()">Signup</a>
+                <a href="#profile" onclick="profileStart()" id="profile">Profile</a>
+              </div>
+            </div>
+          </div>
+        <div id="main">
+            <h1 class="glow">Welcome</h1>   
+        </div>
+        <section id="search" class="search-wrap">
+          <h1>Find A Coding Gig</h1>
+          <form action="gigs.html" class="search-form">
+            <i class="fas fa-search"></i>
+            <input type="search" name="term" placeholder="Javascript, PHP, Rails, etc...">
+            <input type="submit" value="Search">
+          </form>
+        </section>
+    </body>
+    <script src="ulti.js"></script>
+    <script src="panel/signup.js"></script>
+    <script src="panel/login.js"></script>
+    <script src="panel/profile.js"></script>
+    <script src="panel/logout.js"></script>
+    <script src="panel/post.js"></script>
+    <script src="panel/list.js"></script>
+</html>
