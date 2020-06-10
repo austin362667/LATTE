@@ -24,7 +24,7 @@ LATTE為一採用JavaScript開發的單頁網路應用(全端)。
 Deno is a simple, modern and secure runtime for JavaScript and TypeScript that uses V8 and is built in Rust.
 ```
 
-本專案初期採用大量參考筆者教授之作品
+本專案初期大量參考筆者教授之作品
 
 >筆者教授個人網站 [CCC](https://misavo.com/blog/Home)
 >
