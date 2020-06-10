@@ -24,9 +24,9 @@ LATTE為一採用JavaScript開發的單頁網站應用(全端)。
 Deno is a simple, modern and secure runtime for JavaScript and TypeScript that uses V8 and is built in Rust.
 ```
 
-本專案初期大量參考筆者教授之作品
+本專案初期大量參考筆者教授陳鍾誠博士之作品
 
->筆者教授個人網站 [CCC](https://misavo.com/blog/Home)
+>陳鍾誠的個人網站 [CCC](https://misavo.com/blog/Home)
 >
 >[POS系統](https://github.com/ccc-js/pos)
 >
@@ -43,4 +43,6 @@ deno的第三方web server套件 oak ，在上傳大型檔案(如圖片等)，�
 Solution 1. 
 
 筆者單獨測了Database，確定不是PostgreSql的問題，
-接著測了Fetch..未完待續..
+接著測了Fetch..
+
+未完待續..
