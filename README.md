@@ -1,6 +1,6 @@
 # LATTE
 
-LATTE為一採用JavaScript開發的單頁網站應用(全端)。
+LATTE為一主要採用TypeScript開發的單頁網站應用(全端)。
 
 本文主要聚焦在筆者開發LATTE的 Tech Stack ，以及一路上的 Try and Error 。
 
