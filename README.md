@@ -16,7 +16,8 @@ LATTE為一採用JavaScript開發的單頁網路應用(全端)。
 
 本專案採用Deno.js作為後端開發環境。
 若您還沒使用過 Deno，建議先看完以下這篇再繼續看本文！
-[Ithome新聞](https://www.ithome.com.tw/news/137613)
+
+[iThome新聞](https://www.ithome.com.tw/news/137613)
 
 >以下短文節錄自[Deno官網](https://deno.land/)
 ```
