@@ -38,10 +38,9 @@ Deno is a simple, modern and secure runtime for JavaScript and TypeScript that u
 
 Pitfall 1. 
 
-deno的第三方web server套件 oak ，在上傳大型檔案(如圖片等)，會出現 Request Stalled 問題，導致 file system 無法正常讀取。
+deno的第三方web server套件 oak ，在上傳大型檔案(如圖片等)，會出現 Request Stalled 問題，導致 file system 無法正常讀寫。
 
-Solution 1. 
-
+Solution：
 筆者單獨測了Database，確定不是PostgreSql的問題，
 接著測了Fetch..
 
