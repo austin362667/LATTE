@@ -1,6 +1,6 @@
 # LATTE
 
-LATTE為一採用JavaScript開發的單頁網路應用(全端)。
+LATTE為一採用JavaScript開發的單頁網站應用(全端)。
 
 本文主要聚焦在筆者開發LATTE的 Tech Stack ，以及一路上的 Try and Error 。
 
@@ -28,6 +28,19 @@ Deno is a simple, modern and secure runtime for JavaScript and TypeScript that u
 
 >筆者教授個人網站 [CCC](https://misavo.com/blog/Home)
 >
->[POS](https://github.com/ccc-js/pos)
+>[POS系統](https://github.com/ccc-js/pos)
 >
->[Blog](https://github.com/ccc-js/blog6)
+>[Blog系統](https://github.com/ccc-js/blog6)
+
+## 2 - 工程技術
+
+## 3 - 心路歷程
+
+Pitfall 1. 
+
+deno的第三方web server套件 oak ，在上傳大型檔案(如圖片等)，會出現 Request Stalled 問題，導致 file system 無法正常讀取。
+
+Solution 1. 
+
+筆者單獨測了Database，確定不是PostgreSql的問題，
+接著測了Fetch..未完待續..
