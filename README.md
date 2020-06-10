@@ -1,7 +1,7 @@
 # LATTE
 
 LATTE為一採用JavaScript開發的單頁網路應用(全端)。
-儘管作者了解一個產品多功能就是沒功能，但還是想盡力展示一些網站常見的設計。
+
 本文主要聚焦在筆者開發LATTE的 Tech Stack ，以及一路上的 Try and Error 。
 
 >筆者個人網站[Austin Liu](https://austin362667.github.io/)
