@@ -47,8 +47,10 @@ class Controller {
       const { filename, type, size, data } = photo;
       var today = new Date();
       const fsn = `${today.getTime()}--${filename}`;
-      await  Deno.writeFile(`./public/file/img/${fsn}.jpeg`, data);
+      console.log(fsn)
+      await Deno.writeFile(`./public/file/img/${fsn}.jpeg`, data);
       console.log(context.uploadedFiles);
+      context.response.headers.set("Access-Control-Allow-Origin", "*")
       context.response.headers.set("Content-Type", "application/json");
       context.response.body = { "data": fsn };
     } catch (e) {
