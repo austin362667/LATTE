@@ -40,7 +40,7 @@ class Controller {
     }
   }
 
-  async upload(context: any, next: any) {
+  async upload(context: any) {
     // const form:any = await multiParser.multiParser(context.request.serverRequest)
     try {
       const { photo } = context.uploadedFiles;

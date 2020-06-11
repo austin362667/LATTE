@@ -6,7 +6,7 @@ const Router = oak.Router;
 const isHttpError = oak.isHttpError;
 const Status = oak.Status;
 const send = oak.send;
-const upload = upload_middleware_for_oak_framework.upload
+const uploader = upload_middleware_for_oak_framework.upload
 const Ctr = new Controller();
 
 const router = new Router();
@@ -18,7 +18,7 @@ router
   .post("/api/v1.0/post/list", Ctr.list)
   .post(
     "/api/v1.0/post/upload",
-    upload('uploads', ["jpeg", "jpg", "png"], 20000000, 10000000, false, true, true, false),
+    uploader('uploads', ["jpeg", "jpg", "png"], 20000000, 10000000, false, true, true, false),
     Ctr.upload,
   )
   .post("/api/v1.0/post/post", Ctr.post);
@@ -61,6 +61,7 @@ app.addEventListener("error", (evt) => {
 });
 
 const main = async function () {
+  console.log(`${Deno.cwd()}`)
   console.log("Server Up!");
   await app.listen({ port: 80 });
 };
