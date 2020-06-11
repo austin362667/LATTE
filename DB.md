@@ -12,7 +12,7 @@ DROP TABLE users;
 SELECT * FROM users;
 ```
 ```
-CREATE TABLE "posts" ("pid" uuid DEFAULT uuid_generate_v4 (), "owner" varchar(80),"email" varchar(80),"groups" varchar(80), "product" varchar(80), "detail" varchar(800),"price" varchar(80),"photo" varchar(80), "created_at" timestamptz NOT NULL DEFAULT CURRENT_TIMESTAMP, "updated_at" timestamptz NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE "posts" ("pid" uuid DEFAULT uuid_generate_v4 (), "owner" varchar(80),"email" varchar(80),"groups" varchar(80), "product" varchar(80), "detail" varchar(800),"price" varchar(80),"photo" varchar(380), "created_at" timestamptz NOT NULL DEFAULT CURRENT_TIMESTAMP, "updated_at" timestamptz NULL DEFAULT CURRENT_TIMESTAMP);
 ```
 ```
 DROP TABLE posts;
