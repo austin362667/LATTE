@@ -51,7 +51,7 @@ class Controller {
       // await Deno.writeFile(`${Deno.cwd()}/public/file/img/${fsn}.jpeg`, data);
       console.log(context.uploadedFiles);
       context.response.headers.set("Content-Type", "application/json");
-      context.response.body = { "data": url };
+      context.response.body = { "data": uri };
     } catch (e) {
       console.log(`UserController.upload=>${e}`);
     }
