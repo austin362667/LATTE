@@ -78,7 +78,7 @@ tool.postShow = async function (da_i) {
     da_i.price === ""
   ) {
   } else {
-    div1.src = `${Deno.cwd()}${da_i.photo}`;
+    div1.src = `/home/ubuntu/LATTE${da_i.photo}`;
     tmp.appendChild(div1)
 
     div2.innerHTML = titleText;
