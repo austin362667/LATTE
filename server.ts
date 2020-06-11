@@ -18,7 +18,7 @@ router
   .post("/api/v1.0/post/list", Ctr.list)
   .post(
     "/api/v1.0/post/upload",
-    uploader('uploads', ["jpeg", "jpg", "png"], 20000000, 10000000, true, true, true),
+    uploader('uploads', ["jpeg", "jpg", "png"], 20000000, 10000000, false, true, true),
     Ctr.upload,
   )
   .post("/api/v1.0/post/post", Ctr.post);
@@ -28,16 +28,10 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 app.use(async (ctx: any) => {
   await send(ctx, ctx.request.url.pathname, {
-    root: `${Deno.cwd()}`,
-    index: "public/index.html",
+    root: `${Deno.cwd()}/public`,
+    index: "index.html",
   });
 });
-// app.use(async (ctx: any) => {
-//   if(ctx.request.url.pathname.split('/')[0] === "uploads"){
-//   await send(ctx, ctx.request.url.pathname, {
-//     root: `${Deno.cwd()}/`,
-//   }});
-// });
 app.use(async (context, next) => {
   try {
     await next();
@@ -67,8 +61,8 @@ app.addEventListener("error", (evt) => {
 });
 
 const main = async function () {
-  console.log(`${Deno.cwd()}`)
   console.log("Server Up!");
+  console.log(Deno.cwd())
   await app.listen({ port: 80 });
 };
 

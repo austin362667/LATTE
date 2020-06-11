@@ -1,14 +1,14 @@
-import { multiParser } from "../lib.ts";
 import { UserService } from "./services/userService.ts";
 import { PostService } from "./services/postService.ts";
+import ShortUniqueId from 'https://cdn.jsdelivr.net/npm/short-unique-id@latest/short_uuid/mod.ts';
 const User = new UserService();
 const Post = new PostService();
 
 class Controller {
-  async login(context: any) {
+  async login(context:any) {
     const result = await context.request.body();
     const { email, password } = result.value;
-    var userDb: any;
+    var userDb;
     try {
       userDb = await User.getUserByEmail(email);
     } catch (e) {
@@ -25,7 +25,7 @@ class Controller {
     }
   }
 
-  async signup(context: any) {
+  async signup(context:any) {
     const result = await context.request.body();
     const user = result.value;
     try {
@@ -39,26 +39,28 @@ class Controller {
       console.log(`${user.name} Signup failed..`);
     }
   }
-
-  async upload(context: any, next: any) {
+  async upload(context:any, next:any) {
+    var uid = new ShortUniqueId();
     // const form:any = await multiParser.multiParser(context.request.serverRequest)
     try {
       const { photo } = context.uploadedFiles;
       const { filename, type, size, data, id, url, uri } = photo;
       // var today = new Date();
       // const fsn = `${id}`;
-      // console.log(fsn)
-      // await Deno.writeFile(`../public/file/img/${fsn}.jpeg`, data);
-      const urifsp = context.uploadedFiles['photo']['uri']
+      // console.log(today)
+      // var dt = `${today}`
       console.log(context.uploadedFiles);
+      const dts = uid(12)
+      await Deno.writeFile(`./public/file/img/${dts}.jpeg`, data);
+      console.log("save ok!")
       context.response.headers.set("Content-Type", "application/json");
-      context.response.body = { "data": urifsp };
+      context.response.body = { "data": dts };
     } catch (e) {
       console.log(`UserController.upload=>${e}`);
     }
   }
 
-  async post(context: any) {
+  async post(context:any) {
     try {
       const result = await context.request.body();
       const { product, detail, price, photo } = result.value;
@@ -81,9 +83,9 @@ class Controller {
     }
   }
 
-  async profile(context: any) {
-    const userEmail: string = context.cookies.get("email");
-    var userDb: any;
+  async profile(context:any) {
+    const userEmail = context.cookies.get("email");
+    var userDb;
     if (userEmail != undefined && userEmail != "") {
       userDb = await User.getUserByEmail(userEmail);
       console.log(`${userDb.name} Profile success!`);
@@ -94,14 +96,14 @@ class Controller {
     }
   }
 
-  async logout(context: any) {
+  async logout(context:any) {
     console.log("Logout success!");
     context.cookies.set("email", "");
     context.response.headers.set("Content-Type", "application/json");
     context.response.body = { "message": "success" };
   }
 
-  async list(context: any) {
+  async list(context:any) {
     const postsDb = await Post.getAllPosts();
     context.response.headers.set("Content-Type", "appilcation/json");
     context.response.body = { "data": postsDb };
