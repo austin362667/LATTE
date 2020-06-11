@@ -47,7 +47,7 @@ class Controller {
       const { filename, type, size, data } = photo;
       var today = new Date();
       const fsn = `${today.getTime()}--${filename}`;
-      Deno.writeFileSync(`./public/file/img/${fsn}.jpeg`, data);
+      Deno.writeFileSync(`public/file/img/${fsn}.jpeg`, data);
       console.log(context.uploadedFiles);
       context.response.headers.set("Content-Type", "application/json");
       context.response.body = { "data": fsn };
