@@ -32,6 +32,12 @@ app.use(async (ctx: any) => {
     index: "index.html",
   });
 });
+app.use(async (ctx: any) => {
+  if(ctx.request.url.pathname.split('/')[0] === "uploads"){}
+  await send(ctx, ctx.request.url.pathname, {
+    root: `${Deno.cwd()}/`,
+  });
+});
 app.use(async (context, next) => {
   try {
     await next();
