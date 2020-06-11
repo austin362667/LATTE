@@ -1,5 +1,5 @@
 import { oak } from "./lib.ts";
-import { Controller } from "./server/Controller.ts";
+import { Controller } from "./server/controller.ts";
 import { upload } from "https://deno.land/x/upload_middleware_for_oak_framework/mod.ts";
 
 const Application = oak.Application;
