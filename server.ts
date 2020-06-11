@@ -28,7 +28,7 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 app.use(async (ctx: any) => {
   await send(ctx, ctx.request.url.pathname, {
-    root: `${Deno.cwd()}/`,
+    root: `${Deno.cwd()}`,
     index: "public/index.html",
   });
 });
