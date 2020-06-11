@@ -34,19 +34,13 @@ post.submit = async function () {
   var res = await fetch("/api/v1.0/post/upload", {
     method: "POST",
     body: form,
-  }).then(function(response) {
-    return response.json();
   })
-  .then(function(myJson) {
-    console.log(myJson);
-    return myJson;
-  });
 
   var post = {
     "product": product,
     "detail": detail,
     "price": price,
-    "photo": res.data,
+    "photo": "p",
   };
   const r = await tool.postJson("/api/v1.0/post/post", post);
   tool.one("#msg").innerHTML = r.ok ? "Post Success!" : "Post Failed..";
