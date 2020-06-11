@@ -1,7 +1,7 @@
 import { postgre } from "./lib.ts";
 const Client = postgre.Client;
 
-const Db = Client({
+const Db = new Client({
   user: "postgres",
   password:"latte-a1",
   database: "db",
