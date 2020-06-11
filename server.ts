@@ -28,16 +28,16 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 app.use(async (ctx: any) => {
   await send(ctx, ctx.request.url.pathname, {
-    root: `${Deno.cwd()}/public`,
-    index: "index.html",
+    root: `${Deno.cwd()}`,
+    index: "/public/index.html",
   });
 });
-app.use(async (ctx: any) => {
-  if(ctx.request.url.pathname.split('/')[0] === "uploads"){}
-  await send(ctx, ctx.request.url.pathname, {
-    root: `${Deno.cwd()}/`,
-  });
-});
+// app.use(async (ctx: any) => {
+//   if(ctx.request.url.pathname.split('/')[0] === "uploads"){
+//   await send(ctx, ctx.request.url.pathname, {
+//     root: `${Deno.cwd()}/`,
+//   }});
+// });
 app.use(async (context, next) => {
   try {
     await next();
