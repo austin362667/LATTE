@@ -78,7 +78,7 @@ tool.postShow = async function (da_i) {
     da_i.price === ""
   ) {
   } else {
-    div1.src = `${da_i.photo}`;
+    div1.src = `"${da_i.photo}"`;
     tmp.appendChild(div1)
 
     div2.innerHTML = titleText;
