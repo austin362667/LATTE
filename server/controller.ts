@@ -40,14 +40,14 @@ class Controller {
     }
   }
 
-  async upload(context: any) {
+  async upload(context: any, next: any) {
     // const form:any = await multiParser.multiParser(context.request.serverRequest)
     try {
       const { photo } = context.uploadedFiles;
       const { filename, type, size, data } = photo;
       var today = new Date();
       const fsn = `${today.getTime()}--${filename}`;
-      Deno.writeFileSync(`public/file/img/${fsn}.jpeg`, data);
+      Deno.writeFileSync(`./public/file/img/${fsn}.jpeg`, data);
       console.log(context.uploadedFiles);
       context.response.headers.set("Content-Type", "application/json");
       context.response.body = { "data": fsn };
