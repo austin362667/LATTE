@@ -18,7 +18,7 @@ router
   .post("/api/v1.0/post/list", Ctr.list)
   .post(
     "/api/v1.0/post/upload",
-    uploader('uploads', ["jpeg", "jpg", "png"], 20000000, 10000000, false, true, true, false),
+    uploader('uploads', ["jpeg", "jpg", "png"], 20000000, 10000000,true, false, true, true),
     Ctr.upload,
   )
   .post("/api/v1.0/post/post", Ctr.post);

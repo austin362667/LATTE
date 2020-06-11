@@ -44,15 +44,15 @@ class Controller {
     // const form:any = await multiParser.multiParser(context.request.serverRequest)
     try {
       const { photo } = context.uploadedFiles;
-      const { filename, type, size, data } = photo;
-      var today = new Date();
-      const fsn = `${today.getTime()}--${filename}`;
-      console.log(fsn)
-      await Deno.writeFile(`${Deno.cwd()}/public/file/img/${fsn}.jpeg`, data);
+      const { filename, type, size, data, id, url, uri } = photo;
+      // var today = new Date();
+      // const fsn = `${today.getTime()}--${filename}`;
+      // console.log(fsn)
+      // await Deno.writeFile(`${Deno.cwd()}/public/file/img/${fsn}.jpeg`, data);
       console.log(context.uploadedFiles);
       context.response.headers.set("Access-Control-Allow-Origin", "*")
       context.response.headers.set("Content-Type", "application/json");
-      context.response.body = { "data": fsn };
+      context.response.body = { "data": uri };
     } catch (e) {
       console.log(`UserController.upload=>${e}`);
     }
