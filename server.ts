@@ -1,13 +1,12 @@
-import { oak } from "./lib.ts";
+import { oak, upload_middleware_for_oak_framework } from "./lib.ts";
 import { Controller } from "./server/controller.ts";
-import { upload } from "https://deno.land/x/upload_middleware_for_oak_framework/mod.ts";
 
 const Application = oak.Application;
 const Router = oak.Router;
 const isHttpError = oak.isHttpError;
 const Status = oak.Status;
 const send = oak.send;
-
+const upload = upload_middleware_for_oak_framework.upload
 const Ctr = new Controller();
 
 const router = new Router();

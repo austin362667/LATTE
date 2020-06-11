@@ -8,5 +8,7 @@ import * as multiParser from "https://raw.githubusercontent.com/deligenius/multi
 export { multiParser };
 import * as datetime from "https://deno.land/std/datetime/mod.ts";
 export { datetime };
+import * as upload_middleware_for_oak_framework from "https://deno.land/x/upload_middleware_for_oak_framework/mod.ts";
+export { upload_middleware_for_oak_framework };
 // import * as env "https://deno.land/x/dotenv/load.ts";
 // export {env};
