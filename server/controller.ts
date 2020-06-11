@@ -49,9 +49,10 @@ class Controller {
       // const fsn = `${id}`;
       // console.log(fsn)
       // await Deno.writeFile(`../public/file/img/${fsn}.jpeg`, data);
+      const urifsp = context.uploadedFiles['photo']['uri']
       console.log(context.uploadedFiles);
       context.response.headers.set("Content-Type", "application/json");
-      context.response.body = { "data": url };
+      context.response.body = { "data": urifsp };
     } catch (e) {
       console.log(`UserController.upload=>${e}`);
     }
