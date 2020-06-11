@@ -8,12 +8,12 @@ post.html = `
   <p>Price:<br><input type="number" name="price" id="price" /></p>
 <form method="post" enctype="multipart/form-data" id="postForm">
   <div>
-    <label for="file">Photo:</label><br>
-    <input type="file" id="photo" name="photo" multiple>
+    <label for="file">Photo:</label>
+    <div class="button"><input type="file" id="photo" name="photo" multiple></div>
   </div>
 </form>
 <br>
-<button onclick="post.submit()">Post</button>
+<div class="button"><button onclick="post.submit()">Post</button></div>
 <p class="msg" id="msg">&nbsp;</p>
 </div>
 `;

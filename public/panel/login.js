@@ -1,17 +1,17 @@
 const login = {};
 
 login.html = `
-  <div  id="login">
+  <div  id="login" class="form">
     <h1>Login</h1>
     <p>
-      <label>Email</label><br/>
+      <label>Email</label>
       <input id="email" type="email" value="">
     </p>
     <p>
-      <label>Password</label><br/>
+      <label>Password</label>
       <input id="password" type="password">
     </p>
-    <button onclick="login.submit()">LogIn</button>
+    <div class="button"><button onclick="login.submit()">LogIn</button><div>
     <p class="msg" id="msg">&nbsp;</p>
   </div>
     `;

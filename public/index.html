@@ -1,46 +1,74 @@
 <!DOCTYPE html>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <head>
-        <title>Home</title>
-        <style>
-            @import url('./base.css');
-        </style>
-    </head>
-    <body>
-        <div class="navbar">
-            <a href="./index.html" >Home</a>
-            <a href="#post" onclick="post.start()">Post</a>
-            <a href="#news" onclick="list.start()">News</a>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+
+
+  <link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="product.css">
+
+  <title>LATTE</title>
+</head>
+<body>
+  <header>
+    <h2><a href="index.html"><i class="fa fa-coffee"></i>
+        LATTE</a></h2>
+    <nav>
+      <ul>
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li>
+          <a href="#all" onclick="list.start()">All Posts</a>
+        </li>
+        <li>
+          <a href="#post" onclick="post.start()">Add Post</a>
+        </li>
+        <li><a>
             <div class="dropdown">
-              <button class="dropbtn">MyArea
-              </button>
-              <div class="dropdown-content">
-                <a href="#login" onclick="login.start()">Login</a>
-                <a href="#logout" onclick="logout.start()">Logout</a>
-                <a href="#signup" onclick="signup.start()">Signup</a>
-                <a href="#profile" onclick="profileStart()" id="profile">Profile</a>
-              </div>
+              <button class="dropbtn">
+                <a href="#profile" onclick="profile.start()">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                </a></button>
+            <div class="dropdown-content">
+                <ul>
+                  <li>
+                    <a href="#login" onclick="login.start()">Login</a>
+                  </li>
+                  <li>
+                    <a href="#logout" onclick="logout.start()">Logout</a>
+                  </li>
+                  <li>
+                    <a href="#signup" onclick="signup.start()">Signup</a>
+                  </li>
+                </ul>
             </div>
-          </div>
-        <div id="main">
-            <h1 class="glow">Welcome</h1>   
-        </div>
-        <section id="search" class="search-wrap">
-          <h1>Find A Coding Gig</h1>
-          <form action="gigs.html" class="search-form">
-            <i class="fas fa-search"></i>
-            <input type="search" name="term" placeholder="Javascript, PHP, Rails, etc...">
-            <input type="submit" value="Search">
-          </form>
-        </section>
-    </body>
-    <script src="ulti.js"></script>
-    <script src="panel/signup.js"></script>
-    <script src="panel/login.js"></script>
-    <script src="panel/profile.js"></script>
-    <script src="panel/logout.js"></script>
-    <script src="panel/post.js"></script>
-    <script src="panel/list.js"></script>
+            </div>
+        <li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="search" class="search-wrap">
+      <h1>Find A Product</h1>
+      <form action="gigs.html" class="search-form">
+        <i class="fas fa-search"></i>
+        <input type="search" name="term" placeholder="iPhone, Louis Vuitton etc...">
+        <input type="submit" value="Search">
+      </form>
+    </section>
+  </main>
+</body>
+<script src="./ulti.js"></script>
+<script src="./panel/signup.js"></script>
+<script src="./panel/login.js"></script>
+<script src="./panel/logout.js"></script>
+<script src="./panel/profile.js"></script>
+<script src="./panel/post.js"></script>
+<script src="./panel/list.js"></script>
 </html>

@@ -1,6 +1,6 @@
 const profile = {};
 
-const profileStart = async function () {
+profile.start = async function () {
   var userDb = {};
   var { data } = {};
   const r = await tool.postJson("/api/v1.0/user/profile");

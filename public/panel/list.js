@@ -1,8 +1,10 @@
 const list = {};
 
 list.html = `
-<ul id="postList" class="photo-grid">
-</ul>
+<div class="boxify-item">
+    <div class="row" id="postList">
+    </div>
+</div>
 `;
 
 list.start = async function () {

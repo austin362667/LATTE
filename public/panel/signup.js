@@ -4,18 +4,18 @@ signup.html = `
 <div id = "signup">
 <h1>Signup</h1>
 <p>
-    <label>Name</label><br/>
+    <label>Name</label>
     <input id="name" type="text" value="">
 </p>
 <p>
-    <label>Password</label><br/>
+    <label>Password</label>
     <input id="password" type="password">
 </p>
 <p>
-    <label>Email</label><br/>
+    <label>Email</label>
     <input id="email" type="email" value="">
 </p>
-    <button onclick="signup.submit()">SignUp</button>
+<div class="button"><button onclick="signup.submit()">SignUp</button></div>
 <p class="msg" id="msg">&nbsp;</p>
 </div>
 `;

@@ -39,11 +39,11 @@ tool.html = function (path, html) {
 };
 
 tool.show = function (html) {
-  tool.one("#main").innerHTML = html;
+  tool.one("main").innerHTML = html;
 };
 
 tool.title = function (title) {
-  tool.one("#title").innerHTML = title;
+  tool.one("title").innerHTML = title;
 };
 
 tool.listShow = function (da) {
@@ -54,17 +54,19 @@ tool.listShow = function (da) {
 
 tool.postShow = async function (da_i) {
   var div0 = document.createElement("div");
-  div0.className = "card";
+  div0.className = "product-item";
+  var tmp = document.createElement("div")
+  tmp.className = "item-img-wrapper"
   var div1 = document.createElement("img");
-  div1.className = "photo";
+  div1.className = "item-img";
   var div2 = document.createElement("h1");
-  div2.className = "title";
+  div2.className = "item-name";
   var div3 = document.createElement("P");
-  div3.className = "price";
-  var div4 = document.createElement("P");
-  div4.className = "detail";
-  var div5 = document.createElement("button");
-  div5.className = "button";
+  div3.className = "item-price";
+  // var div4 = document.createElement("P");
+  // div4.className = "detail";
+  // var div5 = document.createElement("button");
+  // div5.className = "button";
 
   const titleText = `${da_i.product}`;
   const catalogText = `${da_i.owner} -> ${da_i.groups}`;
@@ -77,18 +79,20 @@ tool.postShow = async function (da_i) {
   ) {
   } else {
     div1.src = `./file/img/${da_i.photo}.jpeg`;
+    tmp.appendChild(div1)
+
     div2.innerHTML = titleText;
     div2.appendChild(document.createElement("br"));
     div2.innerHTML = titleText;
     div3.innerHTML = priceText;
-    div4.innerHTML = detailText;
-    div5.innerHTML = "Contact";
+    // div4.innerHTML = detailText;
+    // div5.innerHTML = "Contact";
 
-    div0.appendChild(div1);
+    div0.appendChild(tmp);
     div0.appendChild(div2);
     div0.appendChild(div3);
-    div0.appendChild(div4);
-    div0.appendChild(div5);
+    // div0.appendChild(div4);
+    // div0.appendChild(div5);
 
     document.getElementById("postList").appendChild(div0);
   }
