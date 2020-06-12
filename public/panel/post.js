@@ -41,7 +41,7 @@ post.submit = async function () {
     console.log(myJson);
     return myJson;
   });
-  console.log(res.data)
+  console.log(res)
   var post = {
     "product": product,
     "detail": detail,

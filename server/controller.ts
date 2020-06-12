@@ -1,6 +1,7 @@
-import ShortUniqueId from 'https://cdn.jsdelivr.net/npm/short-unique-id@latest/short_uuid/mod.ts';
 import { UserService } from "./services/userService.ts";
 import { PostService } from "./services/postService.ts";
+import ShortUniqueId from 'https://cdn.jsdelivr.net/npm/short-unique-id@latest/short_uuid/mod.ts';
+
 const User = new UserService();
 const Post = new PostService();
 
@@ -40,21 +41,17 @@ class Controller {
     }
   }
   async upload(context:any) {
-    var uid = new ShortUniqueId();
     // const form:any = await multiParser.multiParser(context.request.serverRequest)
     try {
-      const { photo } = context.uploadedFiles;
-      const { filename, type, tempfile, size, data} = photo;
-      // var today = new Date();
-      // const fsn = `${id}`;
-      // console.log(today)
-      // var dt = `${today}`
-      console.log(context.uploadedFiles);
-      const dts = uid(12)
-      await Deno.writeFile(`./public/file/img/${dts}.jpeg`, data);
-      console.log(dts)
+      const uuid = new ShortUniqueId();
+      const dts = uuid(12)
+      // await Deno.writeFile(`./public/file/img/${dts}.jpeg`, context.uploadedFiles['photo']['data']);
+      await Deno.remove(context.uploadedFiles['photo']['tempfile']);
+      // context.respond = false;
+      Deno.copyFileSync(`./${context.uploadedFiles['photo']['url']}`, `./public/file/img/${dts}.jpeg`);
       context.response.headers.set("Content-Type", "application/json");
-      context.response.body = { "data": `${dts}` };
+      context.response.body = {"data":`${dts}`};
+      // context.respond = true;
     } catch (e) {
       console.log(`UserController.upload=>${e}`);
     }

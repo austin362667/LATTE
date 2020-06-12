@@ -1,12 +1,12 @@
-import { oak, upload_middleware_for_oak_framework } from "./lib.ts";
+import { oak } from "./lib.ts";
 import { Controller } from "./server/controller.ts";
+import { upload, preUploadValidate} from "https://deno.land/x/upload_middleware_for_oak_framework/mod.ts";
 
 const Application = oak.Application;
 const Router = oak.Router;
 const isHttpError = oak.isHttpError;
 const Status = oak.Status;
 const send = oak.send;
-const uploader = upload_middleware_for_oak_framework.upload
 const Ctr = new Controller();
 
 const router = new Router();
@@ -16,11 +16,9 @@ router
   .post("/api/v1.0/user/logout", Ctr.logout)
   .post("/api/v1.0/user/signup", Ctr.signup)
   .post("/api/v1.0/post/list", Ctr.list)
-  .post(
-    "/api/v1.0/post/upload",
-    uploader('uploads', ["jpeg", "jpg", "png"], 20000000, 10000000, false, true, true),
-    Ctr.upload,
-  )
+  .post("/api/v1.0/post/upload", upload('uploads', ['jpg','png','jpeg'], 20000000, 10000000, true, false, true),
+  Ctr.upload
+)
   .post("/api/v1.0/post/post", Ctr.post);
 
 const app = new Application();
