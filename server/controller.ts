@@ -46,7 +46,7 @@ class Controller {
       const uuid = new ShortUniqueId();
       const dts = uuid(12)
       // await Deno.writeFile(`./public/file/img/${dts}.jpeg`, context.uploadedFiles['photo']['data']);
-      await Deno.remove(`./${context.uploadedFiles['photo']['tempfile']}`);
+      // await Deno.remove(`./${context.uploadedFiles['photo']['tempfile']}`);
       // context.respond = false;
       Deno.copyFileSync(`./${context.uploadedFiles['photo']['url']}`, `./public/file/img/${dts}.jpeg`);
       context.response.headers.set("Content-Type", "application/json");
