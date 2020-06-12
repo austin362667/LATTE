@@ -20,6 +20,7 @@ div {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    max-width: 20%;
     max-height: 25vw;
     border-radius: 4px;
     transition: all 500ms;
@@ -39,8 +40,8 @@ div {
     height: 15vw;
 }
 .item-img {
-    height: 80%;
-    width: 80%;
+    height: 100%;
+    width: 100%;
 }
 
 .item-name {
