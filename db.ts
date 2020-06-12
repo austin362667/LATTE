@@ -2,7 +2,8 @@ import { postgre } from "./lib.ts";
 const Client = postgre.Client;
 
 const Db = new Client({
-  user: "Austin",
+  user: "postgres",
+  password: "latte-a1",
   database: "db",
   hostname: "localhost",
   port: 5432,
