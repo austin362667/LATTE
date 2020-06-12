@@ -16,11 +16,10 @@ router
   .post("/api/v1.0/user/logout", Ctr.logout)
   .post("/api/v1.0/user/signup", Ctr.signup)
   .post("/api/v1.0/post/list", Ctr.list)
-  .post("/api/v1.0/post/upload", upload('uploads', ['jpg','png','jpeg'], 20000000, 10000000, true, false, true),
-  Ctr.upload
-)
-  .post("/api/v1.0/post/post", Ctr.post);
+  .post("/api/v1.0/post/upload", Ctr.upload)
+  // .post("/api/v1.0/post/post", Ctr.post);
 
+const __dirname = new URL('.', import.meta.url).pathname;
 const app = new Application();
 app.use(router.routes());
 app.use(router.allowedMethods());
@@ -60,7 +59,7 @@ app.addEventListener("error", (evt) => {
 
 const main = async function () {
   console.log("Server Up!");
-  console.log(Deno.cwd())
+  console.log(__dirname)
   await app.listen({ port: 80 });
 };
 

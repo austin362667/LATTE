@@ -3,14 +3,13 @@ const post = {};
 post.html = `
 <div id = "post">
 <h1>Post</h1>
+<form method="post" enctype="multipart/form-data" id="postForm">
+
   <p>Title:<br><input type="text" name="product" id="product" /></p>
   <p>Detail:<br><input type="textarea" name="detail" id="detail" /></p>
   <p>Price:<br><input type="number" name="price" id="price" /></p>
-<form method="post" enctype="multipart/form-data" id="postForm">
-  <div>
-    <label for="file">Photo:</label>
-    <div class="button"><input type="file" id="photo" name="photo" multiple></div>
-  </div>
+  <label for="file">Photo:</label>
+  <div class="button"><input type="file" id="photo" name="photo" multiple></div>
 </form>
 <br>
 <div class="button"><button onclick="post.submit()">Post</button></div>
@@ -31,23 +30,20 @@ post.submit = async function () {
   for (var i = 0; i < files.length; i++) {
     form.append(`photo`, files[i]); // ${name}_${i} => photo
   }
+  form.append("product", product)
+  form.append("detail", detail)
+  form.append("price", price)
   var res = await fetch("/api/v1.0/post/upload", {
     method: "POST",
     body: form,
-  }).then(function(response) {
-    return response.json();
   })
-  .then(function(myJson) {
-    console.log(myJson);
-    return myJson;
-  });
-  console.log(res)
-  var post = {
-    "product": product,
-    "detail": detail,
-    "price": price,
-    "photo": res.data,
-  };
-  const r = await tool.postJson("/api/v1.0/post/post", post);
-  tool.one("#msg").innerHTML = r.ok ? "Post Success!" : "Post Failed..";
+  console.log(res.json())
+  // var post = {
+  //   "product": product,
+  //   "detail": detail,
+  //   "price": price,
+  //   "photo": res.data,
+  // };
+  // const r = await tool.postJson("/api/v1.0/post/post", post);
+  tool.one("#msg").innerHTML = res.ok ? "Post Success!" : "Post Failed..";
 };
