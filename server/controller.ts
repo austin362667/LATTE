@@ -60,7 +60,7 @@ class Controller {
       }
       console.log(obj.fields.product)
 
-      const fsn = obj.files[0].filename.split('/')[1]
+      const fsn = obj.files[0].filename.split('/')[3]
       console.log(fsn)
       // await Deno.writeFile(`./public/file/img/${fsn}`, context.uploadedFiles['photo']['data']);
       // await Deno.remove(`./${context.uploadedFiles['photo']['tempfile']}`);
