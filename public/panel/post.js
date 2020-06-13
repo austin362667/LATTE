@@ -2,7 +2,7 @@ const post = {};
 
 post.html = `
 <div id = "post">
-<h1>Post</h1>
+<h1 class="panel">Post</h1>
 <form method="post" enctype="multipart/form-data" id="postForm">
 
   <p>Title:<br><input type="text" name="product" id="product" /></p>

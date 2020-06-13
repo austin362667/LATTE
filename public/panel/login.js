@@ -2,7 +2,7 @@ const login = {};
 
 login.html = `
   <div  id="login" class="form">
-    <h1>Login</h1>
+    <h1  class="panel">Login</h1>
     <p>
       <label>Email</label>
       <input id="email" type="email" value="">

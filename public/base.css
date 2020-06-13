@@ -371,11 +371,11 @@ main p, main label {
   text-align: center;
 }
 
-main h1 {
+.panel {
   font-size: 3rem;
   font-weight: 800;
   color: #fff;
-  margin: 0 0 1.5rem;
+  margin: 1rem;
   text-align: center;
 }
 

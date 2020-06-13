@@ -2,7 +2,7 @@ const signup = {};
 
 signup.html = `
 <div id = "signup">
-<h1>Signup</h1>
+<h1 class="panel">Signup</h1>
 <p>
     <label>Name</label>
     <input id="name" type="text" value="">
