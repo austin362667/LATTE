@@ -1,8 +1,8 @@
 # LATTE
 
-LATTE為一主要採用TypeScript開發的單頁網站應用(全端)。
+LATTE 為一主要採用 TypeScript 開發的單頁網站應用(全端)。
 
-本文主要聚焦在筆者開發LATTE的 Tech Stack ，以及一路上的 Try and Error 。
+本文主要聚焦在筆者開發 LATTE 的 Tech Stack ，以及一路上的 Try and Error 。
 
 >筆者個人網站 [Austin Liu](https://austin362667.github.io/)
 ```
