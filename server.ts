@@ -1,6 +1,6 @@
 import { oak } from "./lib.ts";
 import { Controller } from "./server/controller.ts";
-import { upload, preUploadValidate} from "https://deno.land/x/upload_middleware_for_oak_framework/mod.ts";
+import { handleSocket, chatView } from './chat.ts'
 
 const Application = oak.Application;
 const Router = oak.Router;
@@ -18,6 +18,9 @@ router
   .post("/api/v1.0/post/list", Ctr.list)
   .post("/api/v1.0/post/upload", Ctr.upload)
   // .post("/api/v1.0/post/post", Ctr.post);
+  .get('/chat', chatView)
+  .get('/ws', handleSocket);
+
 
 const __dirname = new URL('.', import.meta.url).pathname;
 const app = new Application();
@@ -35,10 +38,10 @@ app.use(async (context, next) => {
   } catch (err) {
     if (isHttpError(err)) {
       switch (err.status) {
-        case Status.NotFound:
-          console.log("Handle NotFound statuses : ");
-          console.log(err);
-          break;
+        // case Status.NotFound:
+        //   console.log("Handle NotFound statuses : ");
+        //   console.log(err);
+        //   break;
         default:
           console.log("Handle other statuses : ");
           console.log(err);
@@ -56,6 +59,7 @@ app.use(async (context, next) => {
 app.addEventListener("error", (evt) => {
   console.log(`Error Event : ${evt.error}`);
 });
+
 
 const main = async function () {
   console.log("Server Up!");

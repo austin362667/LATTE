@@ -1,4 +1,4 @@
-import * as oak from "https://deno.land/x/oak/mod.ts";
+import * as oak from "https://deno.land/x/oak@v4.0.0/mod.ts";
 export { oak };
 // import * as abc from "https://deno.land/x/abc/mod.ts";
 // export { abc };
