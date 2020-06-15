@@ -1,6 +1,6 @@
 import { WebSocket, acceptWebSocket, isWebSocketCloseEvent, acceptable } from 'https://deno.land/std@0.51.0/ws/mod.ts'
 import { v4 } from 'https://deno.land/std@0.51.0/uuid/mod.ts'
-import { send } from 'https://deno.land/x/oak@v5.1.0/mod.ts';
+import { send } from 'https://deno.land/x/oak@v4.0.0/mod.ts';
   
   const users = new Map<string, WebSocket>()
   
