@@ -16,28 +16,17 @@ div {
 }
 
 .product-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 20%;
-    max-height: 25vw;
-    border-radius: 4px;
-    transition: all 500ms;
-    overflow: hidden;
-    margin:2vw;
-    padding: 1vw;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: rgba(124, 91, 91, 0.2);
     float: left;
-
+    width: 23%;
+    padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-
+    margin: 10px;
+    text-align: center;
 }
 
 .item-img-wrapper {
-    height: 15vw;
+    padding: 5px;
 }
 .item-img {
     width: auto;
@@ -45,21 +34,19 @@ div {
 }
 
 .item-name {
-    text-align: left;
+    text-align: center;
     font-size: 1.5vw;
     overflow:hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    margin: 0.1rem;
 }
 
 .item-price {
-    text-align: left;
+    text-align: center;
     font-size: 1.5vw;
     overflow:hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    margin: 0.1rem;
 }
 
 
