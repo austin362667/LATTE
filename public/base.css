@@ -356,11 +356,13 @@ label {
 body {
   background-size: 100%;
   background-image: url("./res/bg2.jpg");
+  background-attachment: fixed;
 }
 
 @media screen and (max-width: 800px) {
   body {
     background-image: url("./res/bg.jpg");
+    background-attachment: fixed;
   }
 }
 
