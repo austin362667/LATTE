@@ -28,6 +28,7 @@ a {
   text-decoration: none;
 }
 
+
 a:hover {
   color: var(--primary-color);
 }
@@ -72,7 +73,15 @@ header nav ul {
 
 header nav li {
   margin: 0 1rem;
+  text-align: center;
+  vertical-align: middle;
 }
+
+header nav li a{
+  text-align: center;
+  vertical-align: middle;
+}
+
 
 /* Login Button Spacing */
 /*header nav li:last-child {

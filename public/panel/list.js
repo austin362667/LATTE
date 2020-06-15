@@ -1,7 +1,7 @@
 const list = {};
 
 list.html = `
-<div class="boxify-item">
+<div class="list">
     <div class="row" id="postList">
     </div>
 </div>

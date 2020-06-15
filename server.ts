@@ -60,7 +60,7 @@ app.addEventListener("error", (evt) => {
 const main = async function () {
   console.log("Server Up!");
   console.log(__dirname)
-  await app.listen({ port: 80 });
+  await app.listen({ port: 443 });
 };
 
 main();
