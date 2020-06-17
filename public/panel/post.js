@@ -8,11 +8,20 @@ post.html = `
   <p>Title:<br><input type="text" name="product" id="product" /></p>
   <p>Detail:<br><input type="textarea" name="detail" id="detail" /></p>
   <p>Price:<br><input type="number" name="price" id="price" /></p>
-  <label for="file">Photo:</label>
-  <div class="button"><input type="file" id="photo" name="photo" multiple></div>
+
+  <p><label for="groups">Choose a group:</label>
+  <select name="groups" id="groups">
+    <option value="louis vuitton">Louis Vuitton</option>
+    <option value="balenciaga">Balenciaga</option>
+    <option value="gucci">Gucci</option>
+    <option value="prada">Prada</option>
+  </select></p>
+
+  <p><label for="file">Photo:</label>
+  <input type="file" id="photo" name="photo" multiple></p>
 </form>
 <br>
-<div class="button"><button onclick="post.submit()">Post</button></div>
+<p><button onclick="post.submit()">Post</button></p>
 <p class="msg" id="msg">&nbsp;</p>
 </div>
 `;
@@ -25,6 +34,7 @@ post.submit = async function () {
   var product = tool.one("#product").value;
   var detail = tool.one("#detail").value;
   var price = tool.one("#price").value;
+  var groups = tool.one("#groups").value;
   var files = tool.one("#postForm input[type=file]").files;
   var form = new FormData();
   for (var i = 0; i < files.length; i++) {
@@ -33,6 +43,7 @@ post.submit = async function () {
   form.append("product", product)
   form.append("detail", detail)
   form.append("price", price)
+  form.append("groups", groups)
   var res = await fetch("/api/v1.0/post/upload", {
     method: "POST",
     body: form,

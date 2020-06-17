@@ -16,6 +16,7 @@ router
   .post("/api/v1.0/user/logout", Ctr.logout)
   .post("/api/v1.0/user/signup", Ctr.signup)
   .post("/api/v1.0/post/list", Ctr.list)
+  .post("/api/v1.0/post/list/title", Ctr.listByTitle)
   .post("/api/v1.0/post/upload", Ctr.upload)
   // .post("/api/v1.0/post/post", Ctr.post);
   .get('/chat', chatView)

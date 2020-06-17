@@ -60,7 +60,7 @@ class Controller {
       }
       console.log(obj.fields.product)
 
-      const fsn = obj.files[0].filename.split('/')[3]
+      const fsn = obj.files[0].filename.split('/')[1]//aws:3
       console.log(fsn)
       // await Deno.writeFile(`./public/file/img/${fsn}`, context.uploadedFiles['photo']['data']);
       // await Deno.remove(`./${context.uploadedFiles['photo']['tempfile']}`);
@@ -71,7 +71,7 @@ class Controller {
         owner: userDb.name,
         email: userDb.email,
         product: obj.fields.product,
-        groups: "xxbrand",
+        groups: obj.fields.groups,
         detail: obj.fields.detail,
         price: obj.fields.price,
         photo: fsn,
@@ -87,28 +87,7 @@ class Controller {
     }
   }
 
-  async post(context:any) {
-    try {
-      const result = await context.request.body();
-      const { product, detail, price, photo } = result.value;
-      const userDb = await User.getUserByEmail(context.cookies.get("email"));
-      const post = {
-        owner: userDb.name,
-        email: userDb.email,
-        product: product,
-        groups: "xxbrand",
-        detail: detail,
-        price: price,
-        photo: photo,
-      };
-      await Post.createPost(post);
-      context.response.headers.set("Content-Type", "application/json");
-      console.log(post);
-      context.response.body = post;
-    } catch (e) {
-      console.log(`UserController.upload=>${e}`);
-    }
-  }
+
 
   async profile(context:any) {
     const userEmail = context.cookies.get("email");
@@ -132,6 +111,29 @@ class Controller {
 
   async list(context:any) {
     const postsDb = await Post.getAllPosts();
+    context.response.headers.set("Content-Type", "appilcation/json");
+    context.response.body = { "data": postsDb };
+  }
+
+  async listByTitle(context:any) {
+
+    const result = await context.request.body(
+      {       contentTypes: {
+               json: ['application/json'],
+               form: ['multipart', 'urlencoded'],
+               text: ['text']
+             }}
+           );
+           console.log(result.type)
+           var obj
+           if(result.type === 'form-data'){
+             obj = await result.value.read()
+           console.log(obj)
+           }
+           const term = obj.fields.term;
+           console.log(term)
+
+    const postsDb = await Post.getPostsByTtile(term);
     context.response.headers.set("Content-Type", "appilcation/json");
     context.response.body = { "data": postsDb };
   }

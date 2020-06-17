@@ -7,6 +7,6 @@ profile.start = async function () {
   r.ok ? { data } = await r.json() : {};
   r.ok ? userDb = data : userDb = {};
   r.ok
-    ? tool.show(`<h3 class="panel">Name: ${userDb.name}<br>Email: ${userDb.email}</h3>`)
+    ? tool.show(`<h3 class="info">Name: ${userDb.name}<br>Email: ${userDb.email}</h3>`)
     : tool.show(`<p>You must login to view your profile!</p>`);
 };

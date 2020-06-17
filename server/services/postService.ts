@@ -21,6 +21,20 @@ class PostService {
     });
     return posts;
   };
-}
 
+  getPostsByTtile = async (term: string) => {
+    const result = await Post.title(term);
+    const posts = new Array<Post>();
+
+    result.rows.map((post: any) => {
+      var temp: any = {};
+      result.rowDescription.columns.map((item: any, index: any) => {
+        temp[item.name] = post[index];
+      });
+      posts.push(temp);
+    });
+    return posts;
+  };
+
+}
 export { PostService };

@@ -11,7 +11,7 @@ login.html = `
       <label>Password</label>
       <input id="password" type="password">
     </p>
-    <div class="button"><button onclick="login.submit()">LogIn</button><div>
+    <p><button onclick="login.submit()">LogIn</button></p>
     <p class="msg" id="msg">&nbsp;</p>
   </div>
     `;

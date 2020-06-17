@@ -9,6 +9,15 @@ class PostRepository {
     return r;
   }
 
+  async title(term: string) {
+    await Db.connect();
+    const r = await Db.query(
+      `SELECT * FROM posts WHERE product LIKE '${term}';`,
+    );
+    await Db.end();
+    return r;
+  }
+
   async create(post: Post) {
     try {
       await Db.connect();

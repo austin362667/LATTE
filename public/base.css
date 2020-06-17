@@ -139,7 +139,7 @@ header.inner {
   text-align: center;
 }
 
-.search-form input[type='submit'] {
+.search-form #searchbtn {
   background: var(--primary-color);
   border: 1px solid var(--primary-color);
   color: #fff;
@@ -148,7 +148,7 @@ header.inner {
   transition: all 0.8s;
 }
 
-.search-form input[type='submit']:hover {
+.search-form #searchbtn:hover {
   background: var(--primary-hover-color);
   border: 1px solid var(--primary-hover-color);
 }
@@ -366,34 +366,49 @@ body {
   background-size: 100%;
   background-image: url("./res/bg2.jpg");
   background-attachment: fixed;
+  /* background-repeat: no-repeat; */
 }
 
 @media screen and (max-width: 800px) {
   body {
     background-image: url("./res/bg.jpg");
     background-attachment: fixed;
+    /* background-repeat: no-repeat; */
   }
 }
 
-main p, main label {
-  font-family: 'Lato', sans-serif;
-  color: var(--primary-color);
-  background: transparent;
+main p, main label{
+  color: white;
   text-align: center;
+}
+
+input[type=password], option{
+  color: black
+}
+p select, main input {
+  color: black;
 }
 
 .panel {
   font-size: 3rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--primary-color);
   margin: 1rem;
   text-align: center;
 }
 
-main .button button, main .button input{
-  background-color: darken(var(--primary-color));
+.info {
+  font-size: 1rem;
+  font-weight: 400;
   color: var(--primary-color);
-  font-weight: 800;
+  margin: 1rem;
+  text-align: center;
+}
+
+main button {
+  background-color: darken(var(--primary-color));
+  color: white;
+  font-weight: 600;
   margin: 0 0 1.5rem;
   text-align: center;
 }

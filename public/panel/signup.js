@@ -15,7 +15,7 @@ signup.html = `
     <label>Email</label>
     <input id="email" type="email" value="">
 </p>
-<div class="button"><button onclick="signup.submit()">SignUp</button></div>
+<p><button onclick="signup.submit()">SignUp</button></p>
 <p class="msg" id="msg">&nbsp;</p>
 </div>
 `;
