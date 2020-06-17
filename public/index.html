@@ -65,6 +65,15 @@
     </section>
   </main>
 </body>
+<script>
+  var input = document.getElementById("term");
+  input.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+     event.preventDefault();
+     list.title();
+    }
+  });
+  </script>
 <script src="./ulti.js"></script>
 <script src="./panel/signup.js"></script>
 <script src="./panel/login.js"></script>
