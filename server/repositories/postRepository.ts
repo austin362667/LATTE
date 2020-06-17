@@ -12,7 +12,7 @@ class PostRepository {
   async title(term: string) {
     await Db.connect();
     const r = await Db.query(
-      `SELECT * FROM posts WHERE product LIKE '${term}';`,
+      `SELECT * FROM posts WHERE product LIKE '%${term}%' OR owner LIKE '%${term}%' OR detail LIKE '%${term}%' OR groups LIKE '%${term}%';`,
     );
     await Db.end();
     return r;
