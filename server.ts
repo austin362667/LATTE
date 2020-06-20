@@ -1,20 +1,18 @@
 import { oak } from "./lib.ts";
 import { Controller } from "./server/controller.ts";
 import { handleSocket, chatView } from './chat.ts'
-import { serveTLS } from "https://deno.land/std/http/server.ts";
+// import { serveTLS, listenAndServeTLS } from "https://deno.land/std/http/server.ts";
 
-const body = new TextEncoder().encode("Hello HTTPS");
 const options = {
-  hostname: "15.165.187.225",
+  secure: true,
   port: 443,
-  certFile: "/home/ubuntu/certificate.crt",
-  keyFile: "/home/ubuntu/private.key",
+  certFile: "./certificate.crt",
+  keyFile: "./private.key",
 };
-// Top-level await supported
-for await (const req of serveTLS(options)) {
-  req.respond({ body });
-}
-
+// // Top-level await supported
+// for await (const req of serveTLS(options)) {
+//   req.respond({ body });
+// }
 
 
 const Application = oak.Application;
@@ -80,7 +78,7 @@ app.addEventListener("error", (evt) => {
 const main = async function () {
   console.log("Server Up!");
   console.log(__dirname)
-  await app.listen({ port: 80 });
+  app.listen(options);
 };
 
 main();
