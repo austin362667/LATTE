@@ -70,6 +70,19 @@ app.use(async (context, next) => {
   }
 });
 
+app.use(async (ctx: any, next) => {
+
+  if(!ctx.request.secure) {
+
+    console.log(ctx.request.get('Host'));
+    console.log(ctx.request.url.pathname);
+
+    return ctx.response.redirect(['https://', ctx.request.get('Host'), ctx.request.url.pathname].join());
+  }
+  next();
+
+});
+
 app.addEventListener("error", (evt) => {
   console.log(`Error Event : ${evt.error}`);
 });
