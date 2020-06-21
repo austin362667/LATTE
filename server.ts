@@ -41,6 +41,7 @@ const app = new Application();
 app.use(router.routes());
 app.use(router.allowedMethods());
 app.use(async (ctx: any) => {
+
   await send(ctx, ctx.request.url.pathname, {
     root: `${Deno.cwd()}/public`,
     index: "index.html",
@@ -71,13 +72,10 @@ app.use(async (context, next) => {
 });
 
 app.use(async (ctx: any, next) => {
-
+  
   if(!ctx.request.secure) {
 
-    console.log(ctx.request.get('Host'));
-    console.log(ctx.request.url.pathname);
-
-    return ctx.response.redirect(['https://', ctx.request.get('Host'), ctx.request.url.pathname].join());
+    return ctx.response.redirect(['https://', ctx.request.url.host, ctx.request.url.pathname].join());
   }
   next();
 
