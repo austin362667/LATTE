@@ -4,7 +4,7 @@ import { handleSocket, chatView } from './chat.ts'
 // import { serveTLS, listenAndServeTLS } from "https://deno.land/std/http/server.ts";
 
 const options = {
-  // secure: true,
+  secure: true,
   port: 443,
   certFile: "./certificate.crt",
   keyFile: "./private.key",
