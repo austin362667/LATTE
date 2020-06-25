@@ -1,3 +1,4 @@
+// @ts-nocheck
 const list = {};
 
 list.html = `

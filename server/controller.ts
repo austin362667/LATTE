@@ -136,6 +136,7 @@ class Controller {
     const postsDb = await Post.getPostsByTtile(term);
     context.response.headers.set("Content-Type", "appilcation/json");
     context.response.body = { "data": postsDb };
+    console.log({postsDb})
   }
 }
 export { Controller };

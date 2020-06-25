@@ -11,10 +11,14 @@ post.html = `
 
   <p><label for="groups">Choose a group:</label>
   <select name="groups" id="groups">
+    <option value="others">Others</option>
     <option value="louis vuitton">Louis Vuitton</option>
     <option value="balenciaga">Balenciaga</option>
     <option value="gucci">Gucci</option>
     <option value="prada">Prada</option>
+    <option value="apple">Apple</option>
+    <option value="sony">Sony</option>
+    <option value="food">Food</option>
   </select></p>
 
   <p><label for="file">Photo:</label>

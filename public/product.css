@@ -27,15 +27,21 @@
 }
 
 .card-body {
-	display: flex;
+	/* display: flex; */
 	flex-direction: column;
-	align-items: start;
+	/* align-items: start; */
 	padding: 20px;
 	min-height: 250px;
 }
 
 .card-body h4 {
     color: inherit;
+	margin: 10px 0;
+}
+.card-body h3 {
+    color: red;
+    float: right;
+    text-align: right;
 	margin: 10px 0;
 }
 

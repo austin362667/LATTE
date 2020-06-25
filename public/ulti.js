@@ -1,9 +1,5 @@
 const tool = {};
 
-// tool.fetch = async function(path, obj){
-
-// }
-
 tool.postJson = async function (path, obj) {
   console.log(`tool.postJson.path = ${path}`);
   console.log(`tool.postJson.obj = ${JSON.stringify(obj)}`);
@@ -72,18 +68,23 @@ tool.postShow = async function (da_i) {
   
   var title = document.createElement("h4");
   var detail = document.createElement("p");
+  var price = document.createElement("h3");
   var user = document.createElement("div");
   user.className = "user";
   var user_img = document.createElement("img");
   user_img.src = "./user.png"
   var user_info = document.createElement("div")
   user_info.className = "user-info"
+  var user_name = document.createElement("h5");
+  var date = document.createElement("small")
 
   const titleText = `${da_i.product}`;
   const catalogText = `${da_i.groups}`;
   const detailText = `${da_i.detail}`;
   const ownerText = `${da_i.owner}`
   const priceText = `NTD$${da_i.price}`;
+  const dateStr = da_i.updated_at.replace(/[A-Za-z]+/g, " ").split('.')[0]
+  const dateText = `${dateStr}`;
 
   if (
     da_i.product === "" || da_i.owner === "" || da_i.groups === "" ||
@@ -96,15 +97,20 @@ tool.postShow = async function (da_i) {
     groups.innerHTML = catalogText;
     title.innerHTML = titleText;
     detail.innerHTML = detailText;
-    user_info.innerHTML =ownerText;
+    price.innerHTML = priceText;
+    user_name.innerHTML = ownerText;
+    date.innerHTML = dateText;
 
     card_body.appendChild(groups)
     card_body.appendChild(title)
     card_body.appendChild(detail)
+    card_body.appendChild(price)
     card_body.appendChild(user)
 
     user.appendChild(user_img)
     user.appendChild(user_info)
+    user_info.appendChild(user_name)
+    user_info.appendChild(date)
 
     card.appendChild(card_header)
     card.appendChild(card_body)

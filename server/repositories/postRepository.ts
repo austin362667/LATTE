@@ -4,7 +4,7 @@ import { Post } from "../../model/postModel.ts";
 class PostRepository {
   async all() {
     await Db.connect();
-    const r = await Db.query("SELECT * FROM posts;");
+    const r = await Db.query("SELECT * FROM posts ORDER BY created_at DESC;");
     await Db.end();
     return r;
   }
@@ -12,7 +12,7 @@ class PostRepository {
   async title(term: string) {
     await Db.connect();
     const r = await Db.query(
-      `SELECT * FROM posts WHERE product LIKE '%${term}%' OR owner LIKE '%${term}%' OR detail LIKE '%${term}%' OR groups LIKE '%${term}%';`,
+      `SELECT * FROM posts WHERE product LIKE '%${term}%' OR owner LIKE '%${term}%' OR detail LIKE '%${term}%' OR groups LIKE '%${term}%' ORDER BY created_at DESC;`,
     );
     await Db.end();
     return r;
