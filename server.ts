@@ -9,10 +9,6 @@ const options = {
   certFile: "./certificate.crt",
   keyFile: "./private.key",
 };
-// // Top-level await supported
-// for await (const req of serveTLS(options)) {
-//   req.respond({ body });
-// }
 
 
 const Application = oak.Application;

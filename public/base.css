@@ -146,6 +146,7 @@ header.inner {
   padding: 0 2rem;
   cursor: pointer;
   transition: all 0.8s;
+  text-align: center;
 }
 
 .search-form #searchbtn:hover {
@@ -338,6 +339,7 @@ label {
 }
 
 .dropdown-content ul {
+  background-color: #00fbc5;
   font-size: small;
   display: none;
   position: absolute;
@@ -363,17 +365,19 @@ label {
 }
 
 body {
-  background-size: 100%;
-  background-image: url("./res/bg2.jpg");
+  background-image: linear-gradient(to bottom right,#1FC8DB, #00fb9b);
+  /* background-size: 100%; */
+  /* background-image: url("./res/bg2.jpg"); */
   background-attachment: fixed;
   /* background-repeat: no-repeat; */
 }
 
 @media screen and (max-width: 800px) {
   body {
-    background-image: url("./res/bg.jpg");
-    background-attachment: fixed;
-    /* background-repeat: no-repeat; */
+    background-image: linear-gradient(to bottom right,#1FC8DB,#00fb9b);
+    /* background-image: url("./res/bg.jpg");
+    background-attachment: fixed; */
+    background-repeat: no-repeat;
   }
 }
 
@@ -406,10 +410,9 @@ p select, main input {
 }
 
 main button {
-  background-color: darken(var(--primary-color));
+  background-color:var(--primary-color);
   color: white;
   font-weight: 600;
-  margin: 0 0 1.5rem;
   text-align: center;
 }
 

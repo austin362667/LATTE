@@ -53,24 +53,36 @@ tool.listShow = function (da) {
 };
 
 tool.postShow = async function (da_i) {
-  var div0 = document.createElement("div");
-  div0.className = "product-item";
-  var tmp = document.createElement("div")
-  tmp.className = "item-img-wrapper"
-  var div1 = document.createElement("img");
-  div1.className = "item-img";
-  var div2 = document.createElement("h1");
-  div2.className = "item-name";
-  var div3 = document.createElement("P");
-  div3.className = "item-price";
-  // var div4 = document.createElement("P");
-  // div4.className = "detail";
-  // var div5 = document.createElement("button");
-  // div5.className = "button";
+  var card = document.createElement("div");
+  card.className = "card";
+  var card_header = document.createElement("div")
+  card_header.className = "card-header"
+  var item_img = document.createElement("img");
+  var card_body = document.createElement("div");
+  card_body.className = "card-body";
+  var groups = document.createElement("span");
+  groups.className = "tag tag-teal";
+  if(da_i.groups[0]==='b'){
+    groups.className = "tag tag-pink";
+  }
+  if(da_i.groups[0]==='p'){
+    groups.className = "tag tag-purple";
+  }
+
+  
+  var title = document.createElement("h4");
+  var detail = document.createElement("p");
+  var user = document.createElement("div");
+  user.className = "user";
+  var user_img = document.createElement("img");
+  user_img.src = "./user.png"
+  var user_info = document.createElement("div")
+  user_info.className = "user-info"
 
   const titleText = `${da_i.product}`;
-  const catalogText = `${da_i.owner} -> ${da_i.groups}`;
+  const catalogText = `${da_i.groups}`;
   const detailText = `${da_i.detail}`;
+  const ownerText = `${da_i.owner}`
   const priceText = `NTD$${da_i.price}`;
 
   if (
@@ -78,22 +90,25 @@ tool.postShow = async function (da_i) {
     da_i.price === ""
   ) {
   } else {
-    div1.src = `./file/img/${da_i.photo}`;
-    tmp.appendChild(div1)
+    item_img.src = `./file/img/${da_i.photo}`;
+    card_header.appendChild(item_img)
 
-    div2.innerHTML = titleText;
-    div2.appendChild(document.createElement("br"));
-    div2.innerHTML = titleText;
-    div3.innerHTML = priceText;
-    // div4.innerHTML = detailText;
-    // div5.innerHTML = "Contact";
+    groups.innerHTML = catalogText;
+    title.innerHTML = titleText;
+    detail.innerHTML = detailText;
+    user_info.innerHTML =ownerText;
 
-    div0.appendChild(tmp);
-    div0.appendChild(div2);
-    div0.appendChild(div3);
-    // div0.appendChild(div4);
-    // div0.appendChild(div5);
+    card_body.appendChild(groups)
+    card_body.appendChild(title)
+    card_body.appendChild(detail)
+    card_body.appendChild(user)
 
-    document.getElementById("postList").appendChild(div0);
+    user.appendChild(user_img)
+    user.appendChild(user_info)
+
+    card.appendChild(card_header)
+    card.appendChild(card_body)
+
+    document.getElementById("postList").appendChild(card);
   }
 };

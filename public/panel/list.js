@@ -2,7 +2,7 @@ const list = {};
 
 list.html = `
 <div class="list">
-    <div class="row" id="postList">
+    <div class="container" id="postList">
     </div>
 </div>
 `;

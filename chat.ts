@@ -1,6 +1,6 @@
-import { WebSocket, acceptWebSocket, isWebSocketCloseEvent, acceptable } from 'https://deno.land/std@0.51.0/ws/mod.ts'
-import { v4 } from 'https://deno.land/std@0.51.0/uuid/mod.ts'
-import { send } from 'https://deno.land/x/oak@v4.0.0/mod.ts';
+import { WebSocket, acceptWebSocket, isWebSocketCloseEvent, acceptable } from 'https://deno.land/std/ws/mod.ts'
+import { v4 } from 'https://deno.land/std/uuid/mod.ts'
+import { send } from 'https://deno.land/x/oak/mod.ts';
   
   const users = new Map<string, WebSocket>()
   
@@ -35,6 +35,7 @@ import { send } from 'https://deno.land/x/oak@v4.0.0/mod.ts';
 
   export async function handleSocket(ctx:any) {
       // WebSockets Chat
+      await ctx.upgrade();
       if (acceptable(ctx.request.serverRequest)) {
         const { conn, r: bufReader, w: bufWriter, headers } = ctx.request.serverRequest;
         const socket = await acceptWebSocket({
@@ -51,7 +52,7 @@ import { send } from 'https://deno.land/x/oak@v4.0.0/mod.ts';
   }
 
   export async function chatView(context:any){
-
+        await context.upgrade();
         // context.response.headers.set("content-type", "text/html");
         // context.response.body = await Deno.open("./public/chat.html");
         await send(context, "./public/chat.html") 
