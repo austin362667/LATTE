@@ -5,9 +5,9 @@ post.html = `
 <h1 class="panel">Post</h1>
 <form method="post" enctype="multipart/form-data" id="postForm">
 
-  <p>Title:<br><input type="text" name="product" id="product" /></p>
-  <p>Detail:<br><input type="textarea" name="detail" id="detail" /></p>
-  <p>Price:<br><input type="number" name="price" id="price" /></p>
+  <p><label for="product">Title:</label><input type="text" name="product" id="product" /></p>
+  <p><label for="detail">Detail:</label><textarea name="detail" id="detail"></textarea></p>
+  <p><label for="price">Price:</label><input type="number" name="price" id="price" /></p>
 
   <p><label for="groups">Choose a group:</label>
   <select name="groups" id="groups">
@@ -21,7 +21,7 @@ post.html = `
     <option value="food">Food</option>
   </select></p>
 
-  <p><label for="file">Photo:</label>
+  <p><label for="photo">Photo:</label>
   <input type="file" id="photo" name="photo" multiple></p>
 </form>
 <br>
