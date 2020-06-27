@@ -42,7 +42,10 @@ class Controller {
   }
   async upload(context:any) {
     // const form:any = await multiParser.multiParser(context.request.serverRequest)
-    try {
+
+      const userEmail = context.cookies.get("email");
+      if(userEmail){
+        try {
       const uuid = new ShortUniqueId();
       const dts = uuid(12)
       const result = await context.request.body(
@@ -85,6 +88,7 @@ class Controller {
     } catch (e) {
       console.log(`UserController.upload=>${e}`);
     }
+  }
   }
 
 

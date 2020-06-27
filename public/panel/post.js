@@ -60,5 +60,5 @@ post.submit = async function () {
   //   "photo": res.data,
   // };
   // const r = await tool.postJson("/api/v1.0/post/post", post);
-  tool.one("#msg").innerHTML = res.ok ? "Post Success!" : "Post Failed..";
+  tool.one("#msg").innerHTML = res.ok ? "Post Success!" : "Post Failed..PLease Login!";
 };
