@@ -61,7 +61,7 @@ tool.postShow = async function (da_i) {
   if(da_i.groups[0]==='a'){
     groups.className = "tag tag-pink";
   }
-  if(da_i.groups[0]==='f'){
+  if(da_i.groups[0]==='f'){ 
     groups.className = "tag tag-purple";
   }
 
