@@ -58,10 +58,10 @@ tool.postShow = async function (da_i) {
   card_body.className = "card-body";
   var groups = document.createElement("span");
   groups.className = "tag tag-teal";
-  if(da_i.groups[0]==='b'){
+  if(da_i.groups[0]==='a'){
     groups.className = "tag tag-pink";
   }
-  if(da_i.groups[0]==='p'){
+  if(da_i.groups[0]==='f'){
     groups.className = "tag tag-purple";
   }
 
