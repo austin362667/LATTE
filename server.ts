@@ -1,13 +1,15 @@
 import { oak } from "./lib.ts";
 import { Controller } from "./server/controller.ts";
-import { handleSocket, chatView } from './chat.ts'
+import { chatView } from './chat.ts';
+import { WebSocket, WebSocketServer } from "https://deno.land/x/websocket/mod.ts";
+
 // import { serveTLS, listenAndServeTLS } from "https://deno.land/std/http/server.ts";
 
 const options = {
   secure: true,
   port: 443,
-  certFile: "./certificate.crt",
-  keyFile: "./private.key",
+  certFile: "/etc/letsencrypt/live/lattemall.company/fullchain.pem",
+  keyFile: "/etc/letsencrypt/live/lattemall.company/privkey.pem",
 };
 
 
@@ -29,7 +31,7 @@ router
   .post("/api/v1.0/post/upload", Ctr.upload)
   // .post("/api/v1.0/post/post", Ctr.post);
   .get('/chat', chatView)
-  .get('/ws', handleSocket);
+  // .get('/ws', handleSocket);
 
 
 const __dirname = new URL('.', import.meta.url).pathname;
@@ -83,6 +85,29 @@ app.addEventListener("error", (evt) => {
 
 
 const main = async function () {
+
+// websocket serve
+const wss = new WebSocketServer(8080);
+
+wss.on("connection", function (ws: WebSocket) {
+
+	ws.on("message", function (message: string) {
+
+		console.log(message);
+		//ws.send(message);
+
+		// broadcast message
+		wss.clients.forEach(function each(client) {
+			if (!client.isClosed) {
+				client.send(message);
+			}
+		});
+
+	});
+
+});
+
+
   console.log("Server Up!");
   console.log(__dirname)
   app.listen(options);
