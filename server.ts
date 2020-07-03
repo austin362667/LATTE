@@ -1,13 +1,21 @@
 import { oak } from "./lib.ts";
 import { Controller } from "./server/controller.ts";
 import { chatView } from './chat.ts';
-import { WebSocket, WebSocketServer } from "https://deno.land/x/websocket/mod.ts";
+import { SocketServer } from "https://deno.land/x/sockets@master/mod.ts";
 
 // import { serveTLS, listenAndServeTLS } from "https://deno.land/std/http/server.ts";
 
 const options = {
   secure: true,
   port: 443,
+  // port: 80
+  certFile: "/etc/letsencrypt/live/lattemall.company/fullchain.pem",
+  keyFile: "/etc/letsencrypt/live/lattemall.company/privkey.pem",
+};
+
+const optionsWS = {
+  secure: true,
+  port: 8080,
   // port: 80
   certFile: "/etc/letsencrypt/live/lattemall.company/fullchain.pem",
   keyFile: "/etc/letsencrypt/live/lattemall.company/privkey.pem",
@@ -88,8 +96,9 @@ app.addEventListener("error", (evt) => {
 const main = async function () {
 
 // websocket serve
-const wss = new WebSocketServer(8080);
-wss.on("connection", function (ws: WebSocket) {
+const socketServer = new SocketServer();
+socketServer.run(optionsWS)
+socketServer.on("connection", function (ws: any) {
 
 	ws.on("message", function (message: string) {
 
@@ -97,7 +106,7 @@ wss.on("connection", function (ws: WebSocket) {
 		//ws.send(message);
 
 		// broadcast message
-		wss.clients.forEach(function each(client) {
+		socketServer.clients.forEach(function each(client:any) {
 			if (!client.isClosed) {
 				client.send(message);
 			}
