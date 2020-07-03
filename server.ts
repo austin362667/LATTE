@@ -88,7 +88,6 @@ const main = async function () {
 
 // websocket serve
 const wss = new WebSocketServer(8080);
-
 wss.on("connection", function (ws: WebSocket) {
 
 	ws.on("message", function (message: string) {
