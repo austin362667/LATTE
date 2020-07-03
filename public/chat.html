@@ -122,7 +122,7 @@
 			$("#loader").show();
 			$("#sign-in").hide();
 
-			clientWS = new WebSocket(`wss://${window.location.hostname}:8080`);
+			clientWS = new WebSocket(`wss://15.165.187.225:8080`);
 
 			clientWS.onopen = function (event) {
 				swal("Conneceted", "Connected successfully!", "success");
