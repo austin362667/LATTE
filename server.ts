@@ -6,9 +6,9 @@ import { SocketServer } from "https://deno.land/x/sockets@master/mod.ts";
 // import { serveTLS, listenAndServeTLS } from "https://deno.land/std/http/server.ts";
 
 const options = {
-  secure: true,
-  port: 443,
-  // port: 80
+  // secure: true,
+  // port: 443,
+  port: 80,
   certFile: "/etc/letsencrypt/live/lattemall.company/fullchain.pem",
   keyFile: "/etc/letsencrypt/live/lattemall.company/privkey.pem",
 };
