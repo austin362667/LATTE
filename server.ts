@@ -163,9 +163,11 @@ async function handleWs(sock: WebSocket) {
   }
 }
 
-if (import.meta.main) {
+main();
+
+
   /** websocket echo server */
-  const port = Deno.args[0] || "8080";
+  const port = "8080";
   console.log(`websocket server is running on :${port}`);
   for await (const req of serve(`:${port}`)) {
     const { conn, r: bufReader, w: bufWriter, headers } = req;
@@ -181,7 +183,6 @@ if (import.meta.main) {
         await req.respond({ status: 400 });
       });
   }
-}
 
 
-main();
+
