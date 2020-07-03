@@ -6,7 +6,7 @@ import { WebSocket, WebSocketServer } from "https://deno.land/x/websocket/mod.ts
 // import { serveTLS, listenAndServeTLS } from "https://deno.land/std/http/server.ts";
 
 const options = {
-  // secure: true,
+  secure: true,
   port: 443,
   // port: 80
   certFile: "/etc/letsencrypt/live/lattemall.company/fullchain.pem",
