@@ -87,7 +87,7 @@ app.addEventListener("error", (evt) => {
 const main = async function () {
 
 // websocket serve
-const wss = new WebSocketServer(8080);
+const wss = new WebSocketServer(8081);
 
 wss.on("connection", function (ws: WebSocket) {
 
