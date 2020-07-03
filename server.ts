@@ -7,9 +7,10 @@ import { WebSocket, WebSocketServer } from "https://deno.land/x/websocket/mod.ts
 
 const options = {
   // secure: true,
-  port: 443,
-  certFile: "/etc/letsencrypt/live/lattemall.company/fullchain.pem",
-  keyFile: "/etc/letsencrypt/live/lattemall.company/privkey.pem",
+  // port: 443,
+  port: 80
+  // certFile: "/etc/letsencrypt/live/lattemall.company/fullchain.pem",
+  // keyFile: "/etc/letsencrypt/live/lattemall.company/privkey.pem",
 };
 
 
