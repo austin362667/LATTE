@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>WebSocket Chat made with Deno</title>
+	<title>Chatting room</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
@@ -47,7 +47,7 @@
 
 		<div class="box">
 
-			<h1 class="display-4">WebSocket Chat made with Deno</h1>
+			<h1 class="display-4">Chatting room</h1>
 		
 			<div id="loader" class="text-center my-4">
 				<div class="spinner-border  text-muted"></div>
@@ -64,7 +64,7 @@
 						<input type="text" class="form-control" id="usr">
 					</div>
 
-					<button class="btn btn-primary" onclick="main()">Entrar</button>
+					<button class="btn btn-primary" onclick="main()">Enter</button>
 
 				</div>
 
@@ -92,7 +92,7 @@
 		</div>
 
 	</div>
-
+	<script src="ulti.js"></script>
 	<script>
 		
 		var userName = null;
@@ -100,15 +100,24 @@
 		var clientWS = null;
 
 
-		function main()
+		async function main()
 		{
-			if($("#usr").val() == "")
+			var userDb = {};
+  			var data = {};
+  			const r = await tool.postJson("/api/v1.0/user/profile");
+			  r.ok ? { data } = await r.json(): {};
+			  console.log(data)
+  			userDb = r.ok ? data : {};
+
+			  console.log(userDb.name)
+
+			if(!userDb.name)
 			{
 				swal("Warning", "Empty name!", "warning");
 				return;
 			}
-
-			userName = $("#usr").val();
+			
+			userName = userDb.name//$("#usr").val();
 
 			$("#loader").show();
 			$("#sign-in").hide();
@@ -171,6 +180,7 @@
 
 
 	</script>
+	<script>window.onload = main()</script>
 
 </body>
 </html>
