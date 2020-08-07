@@ -23,13 +23,13 @@ ul {
   padding: 0;
 }
 
-a {
+li a , header a {
   color: #fff;
   text-decoration: none;
 }
 
 
-a:hover {
+li a:hover , header a:hover{
   color: var(--primary-color);
 }
 

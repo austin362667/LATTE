@@ -53,23 +53,6 @@
 				<div class="spinner-border  text-muted"></div>
 			</div>
 
-			<div id="sign-in" class="my-4">
-
-				<div class="bg-light py-2 px-4 rounded">
-
-					<h3>Sigin</h3>
-
-					<div class="form-group">
-						<label for="usr">Name:</label>
-						<input type="text" class="form-control" id="usr">
-					</div>
-
-					<button class="btn btn-primary" onclick="main()">Enter</button>
-
-				</div>
-
-			</div>
-
 			<div id="chatbox" class="my-4">
 
 				<div class="bg-light py-2 px-4 rounded">
@@ -94,22 +77,33 @@
 	</div>
 	<script src="ulti.js"></script>
 	<script>
-		
-		var userName = null;
-
+		var input = document.getElementById("msg");
+		input.addEventListener("keyup", function(event) {
+		  if (event.keyCode === 13) {
+		   event.preventDefault();
+		   send();
+		  }
+		});
+		</script>
+	<script>
+		var suserName = null;
+		var ruserName={};
 		var clientWS = null;
 
 
 		async function main()
 		{
+
+
 			var userDb = {};
   			var data = {};
-  			const r = await tool.postJson("/api/v1.0/user/profile");
-			  r.ok ? { data } = await r.json(): {};
+			  const r = await tool.postJson("/api/v1.0/user/profile");
+			  r.ok ? { data, ruserName } = await r.json(): {};
 			  console.log(data)
-  			userDb = r.ok ? data : {};
+  			userDb = data;
 
 			  console.log(userDb.name)
+			  console.log(ruserName)
 
 			if(!userDb.name)
 			{
@@ -117,10 +111,10 @@
 				return;
 			}
 			
-			userName = userDb.name//$("#usr").val();
+			suserName = userDb.name//$("#usr").val();
 
 			$("#loader").show();
-			$("#sign-in").hide();
+			
 
 			clientWS = new WebSocket(`ws://${window.location.hostname}:8080`);
 
@@ -135,14 +129,12 @@
 				swal("Error", "Something happens!", "error");
 
 				$("#chatbox").hide();
-				$("#sign-in").show();			
 			};
 
 			clientWS.onclose = function (event) {
 				swal("Closed", "Your connection was closed!", "info");
 
 				$("#chatbox").hide();
-				$("#sign-in").show();			
 			};
 
 			clientWS.onmessage = function (event) {
@@ -150,13 +142,14 @@
 
 				var message = JSON.parse(event.data);
 
-				if(message.type == "message")
+				if(message.type == "direct_message")
 				{
-					if(message.user != userName)
-						$("#message-box").append('<div><div class="bubble"><b>' + message.user + ': </b>' + message.content + '</div></div>');
-					else
-						$("#message-box").append('<div class="text-right"><div class="bubble bubble-info"><b>' + message.user + ': </b>' + message.content + '</div></div>');
+					if(message.senderName != suserName  && message.receiverName===userDb.name){
+						$("#message-box").append('<div><div class="bubble"><b>' + message.senderName + ': </b>' + message.content + '</div></div>');
+					}else if(message.senderName===userDb.name){
+						$("#message-box").append('<div class="text-right"><div class="bubble bubble-info"><b>' + message.senderName + ': </b>' + message.content + '</div></div>');
 				}
+			}
 				
 
 			};
@@ -168,8 +161,9 @@
 				return;
 
 			var message = {
-				type: "message",
-				user: userName,
+				type: "direct_message",
+				receiverName: ruserName,
+				senderName: suserName,
 				content: $("#msg").val(),
 			};
 

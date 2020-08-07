@@ -75,7 +75,7 @@ tool.postShow = async function (da_i) {
   user_img.src = "./user.png"
   var user_info = document.createElement("div")
   user_info.className = "user-info"
-  var user_name = document.createElement("h5");
+  var user_name = document.createElement("a");
   var date = document.createElement("small")
 
   const titleText = `${da_i.product}`;
@@ -99,6 +99,7 @@ tool.postShow = async function (da_i) {
     detail.innerHTML = detailText;
     price.innerHTML = priceText;
     user_name.innerHTML = ownerText;
+    user_name.href = `/chat?receiver=${ownerText}`;
     date.innerHTML = dateText;
 
     card_body.appendChild(groups)

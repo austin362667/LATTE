@@ -6,5 +6,7 @@ import * as postgre from "https://deno.land/x/postgres/mod.ts";
 export { postgre };
 import * as datetime from "https://deno.land/std/datetime/mod.ts";
 export { datetime };
+export { default as cheerio } from "https://dev.jspm.io/cheerio";
+
 // import * as env "https://deno.land/x/dotenv/load.ts";
 // export {env};

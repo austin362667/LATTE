@@ -18,3 +18,9 @@ CREATE TABLE posts ("pid" uuid DEFAULT uuid_generate_v4 (), "owner" varchar(80),
 DROP TABLE posts;
 SELECT * FROM posts;
 ```
+
+CREATE TABLE Post_Table ("PostId" uuid, "Title" varchar(256),"Detail" varchar(800),"Brand" varchar(256), "Price" numeric, "SoldCount" integer,"ViewCount" integer,"ItemId" varchar(256), "ShopId" varchar(256), "Image" varchar(256));
+
+CREATE TABLE Keyword_Table ("KeywordId" uuid, "Content" varchar(256), "SearchCount" integer, "AvgPrice" numeric, "LastSearchTime" varchar(256));
+
+CREATE TABLE Feed_Table ("KeywordId" uuid, "PostId" uuid);

@@ -19,7 +19,7 @@ list.start = async function () {
 };
 
 
-list.title = async function () {
+list.id = async function () {
 
   var term = tool.one("#term").value;
   var form = new FormData();

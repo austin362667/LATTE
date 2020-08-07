@@ -85,7 +85,8 @@
 	width: 40px;
 }
 
-.user-info h5 {
+.user-info a {
+    font-size: large;
 	margin: 0;
 }
 
