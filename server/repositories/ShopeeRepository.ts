@@ -36,7 +36,7 @@ class ShopeeRepository {
                 Feed_Table
             WHERE
                 "KeywordId" = '${keywordId}'
-          ) ORDER BY "SoldCount" DESC, "ViewCount" DESC LIMIT 50;`
+          ) ORDER BY "SoldCount" + "ViewCount" DESC LIMIT 50;`
         );
         await Db.end();
         return r;

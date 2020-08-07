@@ -46,7 +46,7 @@ class ShopeeService {
         //360w Millisecond = 1h
         const currentTime:number = new Date().getTime();
         console.log('delta: ',currentTime - lastSearchTime)
-        if(currentTime - lastSearchTime>3600000){
+        if(currentTime - lastSearchTime>36000000){
             return true;
         }else{
             return false;
