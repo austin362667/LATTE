@@ -22,6 +22,20 @@ class ShopeeService {
         return keywords;
       };
 
+    getPostByItemIdAndShopId = async (itemId:number,shopId:number) => {
+      const r = await Shopee.getPostByItemIdAndShopId(itemId, shopId);
+      const posts = new Array<Post>();
+  
+      r.rows.map((keyword: any) => {
+        var temp: any = {};
+        r.rowDescription.columns.map((item: any, index: any) => {
+          temp[item.name] = keyword[index];
+        });
+        posts.push(temp);
+      });
+      return posts;
+    };
+
     inKeywordTable = async (keyword:Keyword[]) => {
 
         return keyword.length===1;
@@ -32,7 +46,7 @@ class ShopeeService {
         //360w Millisecond = 1h
         const currentTime:number = new Date().getTime();
         console.log('delta: ',currentTime - lastSearchTime)
-        if(currentTime - lastSearchTime>600000){
+        if(currentTime - lastSearchTime>3600000){
             return true;
         }else{
             return false;

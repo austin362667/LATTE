@@ -15,6 +15,17 @@ class ShopeeRepository {
         return r;
     }
 
+    async getPostByItemIdAndShopId(itemId:number,shopId:number) {
+      await Db.connect();
+      const r = await Db.query(
+        `SELECT * FROM Post_Table 
+        WHERE 
+        "ItemId" = '${itemId}' AND "ShopId" = '${shopId}';`
+      );
+      await Db.end();
+      return r;
+  }
+
     async getFeedPosts(keywordId:string) {
         await Db.connect();
         const r = await Db.query(
@@ -25,7 +36,7 @@ class ShopeeRepository {
                 Feed_Table
             WHERE
                 "KeywordId" = '${keywordId}'
-          ) ;`
+          ) ORDER BY "SoldCount" DESC, "ViewCount" DESC LIMIT 50;`
         );
         await Db.end();
         return r;

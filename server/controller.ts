@@ -205,9 +205,12 @@ class Controller {
         posts = await Shopee.fetchShopeeData(word);
         
         for(var i=0; i<posts.length;i++){
-          await Shopee.createPost(posts[i]);
-          const feed:Feed = {KeywordId:keyword.KeywordId,PostId:posts[i].PostId}
-          await Shopee.createFeed(feed);
+          const checkPost = await Shopee.getPostByItemIdAndShopId(posts[i].ItemId, posts[i].ShopId);
+          if(checkPost.length === 0){
+            await Shopee.createPost(posts[i]);
+            const feed:Feed = {KeywordId:keyword.KeywordId,PostId:posts[i].PostId}
+            await Shopee.createFeed(feed);
+          }
         }
 
         var avgPrice = 0.0;
@@ -238,11 +241,14 @@ class Controller {
       posts = await Shopee.fetchShopeeData(word);
       console.log(posts.length);
       for(var i=0; i<posts.length;i++){
+        const checkPost = await Shopee.getPostByItemIdAndShopId(posts[i].ItemId, posts[i].ShopId);
+        if(checkPost.length === 0){
         await Shopee.createPost(posts[i]);
         console.log(posts[i].Title);
         const feed:Feed = {KeywordId:keywordId,PostId:posts[i].PostId}
         await Shopee.createFeed(feed);
         console.log(feed.PostId);
+        }
       }
 
       var avgPrice = 0.0;

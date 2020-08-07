@@ -44,7 +44,7 @@ tool.title = function (title) {
 
 tool.listShow = function (da) {
   for (let i = 0; i < da.length; i++) {
-    tool.postShow(da[i]);
+    tool.shopeeShow(da[i]);
   }
 };
 
@@ -103,6 +103,86 @@ tool.postShow = async function (da_i) {
     date.innerHTML = dateText;
 
     card_body.appendChild(groups)
+    card_body.appendChild(title)
+    card_body.appendChild(detail)
+    card_body.appendChild(price)
+    card_body.appendChild(user)
+
+    user.appendChild(user_img)
+    user.appendChild(user_info)
+    user_info.appendChild(user_name)
+    user_info.appendChild(date)
+
+    card.appendChild(card_header)
+    card.appendChild(card_body)
+
+    document.getElementById("postList").appendChild(card);
+  }
+};
+
+
+tool.shopeeShow = async function (da_i) {
+  var card = document.createElement("div");
+  card.className = "card";
+  var card_header = document.createElement("div")
+  card_header.className = "card-header"
+  var item_img = document.createElement("img");
+  var card_body = document.createElement("div");
+  card_body.className = "card-body";
+  var sold = document.createElement("span");
+  sold.className = "tag tag-teal";
+  var view = document.createElement("span");
+  view.className = "tag tag-pink";
+  // if(da_i.groups[0]==='a'){
+  //   groups.className = "tag tag-pink";
+  // }
+  // if(da_i.groups[0]==='f'){ 
+  //   groups.className = "tag tag-purple";
+  // }
+
+  
+  var title = document.createElement("h4");
+  var detail = document.createElement("p");
+  var price = document.createElement("h3");
+  var user = document.createElement("div");
+  user.className = "user";
+  var user_img = document.createElement("img");
+  user_img.src = "./user.png"
+  var user_info = document.createElement("div")
+  user_info.className = "user-info"
+  var user_name = document.createElement("a");
+  var date = document.createElement("small")
+
+  const titleText = `${da_i.Title}`;
+  const soldText = `已賣出 ${da_i.SoldCount}`;
+  const viewText = `人氣 ${da_i.ViewCount}`;
+  const detailText = `${da_i.Detail}`;
+  const ownerText = `https://shopee.tw/${da_i.Title}-i.${da_i.ShopId}.${da_i.ItemId}`
+  const priceText = `NTD$${da_i.Price/100000.0}`;
+  // const dateStr = `人氣 ${da_i.ViewCount}`//da_i.updated_at.replace(/[A-Za-z]+/g, " ").split('.')[0]
+  const dateText = `2020/08`;
+
+  if (
+    da_i.Title === "" ||
+    da_i.Price === ""
+  ) {
+  } else {
+    item_img.src = `https://cf.shopee.tw/file/${da_i.Image}`;
+    card_header.appendChild(item_img)
+
+    sold.innerHTML = soldText;
+    view.innerHTML = viewText;
+    title.innerHTML = titleText;
+    detail.innerHTML = detailText;
+    price.innerHTML = priceText;
+    user_name.innerHTML ='蝦皮傳送門';
+    user_name.style = "text-decoration:none";
+    user_name.href = `${ownerText}`;
+    user_name.target="_blank";
+    date.innerHTML = dateText;
+
+    card_body.appendChild(sold)
+    card_body.appendChild(view)
     card_body.appendChild(title)
     card_body.appendChild(detail)
     card_body.appendChild(price)
