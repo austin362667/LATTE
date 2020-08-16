@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant-TW">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
     crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/png" href="./logo.png" />
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="LATTE - Buy things, Make friends." />
@@ -15,13 +16,13 @@
   <link rel="stylesheet" href="base.css">
 <link rel="stylesheet" href="product.css">
 
-  <title>LATTE</title>
+  <title>HAPPYY</title>
 </head>
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <header>
-    <h2><a href="index.html"><i class="fa fa-coffee"></i>
-        LATTE</a></h2>
+    <h2><a href="index.html"><i class="fas fa-smile-wink"></i>
+      HAPPYY</a></h2>
     <nav>
       <ul>
         <li>
@@ -63,21 +64,43 @@
       <h1>Find A Product</h1>
       <div class="search-form">
         <input type="search" name="term" id="term" placeholder="碎花洋裝  iPhone  ...">
-        <a id="searchbtn" value="Search" onclick="list.title()" class="fas fa-search"></a>
+        <a id="clickable">
+          <i id="searchbtn" class="fas fa-search"></i>
+        </a>
       </div>
     </section>
   </main>
 </body>
+
 <script>
   var input = document.getElementById("term");
+  var loadingBtn = document.getElementById("searchbtn");
+  var clickableBtn = document.getElementById("clickable");
+
   input.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
-     event.preventDefault();
-     list.title();
+      loadingBtn.className = "fa fa-refresh fa-spin";
+      event.preventDefault();
+      list.title();
     }
   });
-  </script>
 
+  clickableBtn.addEventListener("click", function(event) {
+      loadingBtn.className = "fa fa-refresh fa-spin";
+      event.preventDefault();
+      list.title();
+  });
+  </script>
+<script>
+var foo = document.getElementById('term');
+  foo.addEventListener('focus', function () {
+      this.setAttribute('value', "碎花洋裝");
+      // this.value = '';
+  });
+  // foo.addEventListener('blur', function () {
+  //       this.value = "";//this.getAttribute('data-value')
+  // });
+  </script>
 <script>
   if('serviceWorker' in navigator) {
       window.addEventListener('load', () => {

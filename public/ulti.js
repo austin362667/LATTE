@@ -42,9 +42,9 @@ tool.title = function (title) {
   tool.one("title").innerHTML = title;
 };
 
-tool.listShow = function (da) {
+tool.listShow = function (da, avgPrice) {
   for (let i = 0; i < da.length; i++) {
-    tool.shopeeShow(da[i]);
+    tool.shopeeShow(da[i], avgPrice);
   }
 };
 
@@ -121,7 +121,7 @@ tool.postShow = async function (da_i) {
 };
 
 
-tool.shopeeShow = async function (da_i) {
+tool.shopeeShow = async function (da_i, avgPrice) {
   var card = document.createElement("div");
   card.className = "card";
   var card_header = document.createElement("div")
@@ -130,19 +130,27 @@ tool.shopeeShow = async function (da_i) {
   var card_body = document.createElement("div");
   card_body.className = "card-body";
   var sold = document.createElement("span");
-  sold.className = "tag tag-teal";
+  sold.className = "tag tag-pink";
   var view = document.createElement("span");
-  view.className = "tag tag-pink";
-  // if(da_i.groups[0]==='a'){
-  //   groups.className = "tag tag-pink";
-  // }
-  // if(da_i.groups[0]==='f'){ 
-  //   groups.className = "tag tag-purple";
-  // }
+  view.className = "tag tag-teal";
+
+  var priceCheck = document.createElement("span");
+
+  if(da_i.Price/100000 > avgPrice*1.3){
+    priceCheck.className = "tag tag-green";
+    priceCheck.innerHTML = "太貴啦~";
+  }
+  if(da_i.Price/100000 < avgPrice*0.8){ 
+    priceCheck.className = "tag tag-purple";
+    priceCheck.innerHTML = "太便宜!";
+  }
 
   
   var title = document.createElement("h4");
   var detail = document.createElement("p");
+  var hoverDetail = document.createElement("p");
+  detail.className = 'detail';
+  hoverDetail.className = 'hoverDetail';
   var price = document.createElement("h3");
   var user = document.createElement("div");
   user.className = "user";
@@ -157,6 +165,7 @@ tool.shopeeShow = async function (da_i) {
   const soldText = `已賣出 ${da_i.SoldCount}`;
   const viewText = `人氣 ${da_i.ViewCount}`;
   const detailText = `${da_i.Detail}`;
+  const hoverDetailText = `${da_i.Detail}`;
   const ownerText = `https://shopee.tw/${da_i.Title}-i.${da_i.ShopId}.${da_i.ItemId}`
   const priceText = `NTD$${da_i.Price/100000.0}`;
   // const dateStr = `人氣 ${da_i.ViewCount}`//da_i.updated_at.replace(/[A-Za-z]+/g, " ").split('.')[0]
@@ -174,6 +183,7 @@ tool.shopeeShow = async function (da_i) {
     view.innerHTML = viewText;
     title.innerHTML = titleText;
     detail.innerHTML = detailText;
+    hoverDetail.innerHTML = hoverDetailText;
     price.innerHTML = priceText;
     user_name.innerHTML ='蝦皮傳送門';
     user_name.style = "text-decoration:none";
@@ -183,8 +193,10 @@ tool.shopeeShow = async function (da_i) {
 
     card_body.appendChild(sold)
     card_body.appendChild(view)
+    card_body.appendChild(priceCheck)
     card_body.appendChild(title)
     card_body.appendChild(detail)
+    // card_body.appendChild(hoverDetail)
     card_body.appendChild(price)
     card_body.appendChild(user)
 
@@ -199,3 +211,14 @@ tool.shopeeShow = async function (da_i) {
     document.getElementById("postList").appendChild(card);
   }
 };
+
+tool.avgPrice = function (data) {
+
+  var avgPrice = 0;
+  for(var i of data){
+    avgPrice+=(i.Price/100000);
+  }
+  avgPrice/=data.length;
+
+  return avgPrice;
+}

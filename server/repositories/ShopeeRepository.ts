@@ -15,12 +15,12 @@ class ShopeeRepository {
         return r;
     }
 
-    async getPostByItemIdAndShopId(itemId:number,shopId:number) {
+    async getPostByItemIdAndShopId(itemId:string,shopId:string) {
       await Db.connect();
       const r = await Db.query(
-        `SELECT * FROM Post_Table 
-        WHERE 
-        "ItemId" = '${itemId}' AND "ShopId" = '${shopId}';`
+        'SELECT * FROM Post_Table WHERE "ItemId"=$1 AND "ShopId"=$2;'
+        ,itemId
+        ,shopId
       );
       await Db.end();
       return r;
@@ -46,11 +46,10 @@ class ShopeeRepository {
         try {
             await Db.connect();
             const r = await Db.query(
-              'INSERT INTO Keyword_Table ("KeywordId", "Content", "SearchCount", "AvgPrice", "LastSearchTime") VALUES ($1, $2, $3, $4, $5);',
+              'INSERT INTO Keyword_Table ("KeywordId", "Content", "SearchCount", "LastSearchTime") VALUES ($1, $2, $3, $4);',
               keyword.KeywordId,
               keyword.Content,
               keyword.SearchCount,
-              keyword.AvgPrice,
               keyword.LastSearchTime
             );
           } catch (err) {
@@ -64,9 +63,8 @@ class ShopeeRepository {
         try {
             await Db.connect();
             const r = await Db.query(
-              'UPDATE Keyword_Table SET "SearchCount" = $1, "AvgPrice" = $2, "LastSearchTime" = $3 WHERE "KeywordId" = $4;',
+              'UPDATE Keyword_Table SET "SearchCount" = $1, "LastSearchTime" = $2 WHERE "KeywordId" = $3;',
               keyword.SearchCount,
-              keyword.AvgPrice,
               keyword.LastSearchTime,
               keyword.KeywordId,
             );

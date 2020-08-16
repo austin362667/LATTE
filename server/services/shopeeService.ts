@@ -22,14 +22,14 @@ class ShopeeService {
         return keywords;
       };
 
-    getPostByItemIdAndShopId = async (itemId:number,shopId:number) => {
+    getPostByItemIdAndShopId = async (itemId:string,shopId:string) => {
       const r = await Shopee.getPostByItemIdAndShopId(itemId, shopId);
       const posts = new Array<Post>();
   
-      r.rows.map((keyword: any) => {
+      r.rows.map((post: any) => {
         var temp: any = {};
         r.rowDescription.columns.map((item: any, index: any) => {
-          temp[item.name] = keyword[index];
+          temp[item.name] = post[index];
         });
         posts.push(temp);
       });
@@ -61,7 +61,7 @@ class ShopeeService {
           headers: new Headers({ "User-Agent": "Googlebot" }),
         })
         // console.log(await r.text())
-        console.log(r.ok)
+        console.log(`Shopee.com search = ${r.ok}`);
 
         // @ts-ignore
         // const parser = new DOMParser();
@@ -81,7 +81,7 @@ class ShopeeService {
           }
         }
 
-        console.log(items.length);
+        console.log(`items.length = ${items.length}`);
         // console.log(items.length);
         // console.log($('div .col-xs-2-4 shopee-search-item-result__item a').length);
         // console.log($('div .col-xs-2-4 shopee-search-item-result__item a').attr("href").length);
@@ -89,34 +89,96 @@ class ShopeeService {
         // const doc = parser.parseFromString(r.body, "text/html");
         // var items = new Array($('div').find('.col-xs-2-4 shopee-search-item-result__item').attr("href"));
         // console.log(items.length)
-        for (var i=0;i<items.length;i++) {
-          // console.log(items[i]);
-          const link:string = items[i];
-          console.log(link);
-          const itemid:string = link.split('-i.')[1].split('.')[1];
-          const shopid:string = link.split('-i.')[1].split('.')[0];
-          if(itemid!=undefined && shopid!=undefined){
 
-            console.log(`itemid: ${itemid}, shopid: ${shopid}`);
-
-            const r = await window.fetch(
-              `https://shopee.tw/api/v2/item/get?itemid=${itemid}&shopid=${shopid}`,
-              {
-                method: "GET",
-                headers: new Headers({ "User-Agent": "Googlebot" }),
-              });
-            if(r.ok){
-              const body = await r.json()
-              var post:Post = await this.fromJson(body['item']);
-              post = {...post, Detail:post.Detail.replace(' ', '').slice(0, 600), PostId:v4.generate()}
-              console.log(`ok!  ...  itemid: ${post.ItemId}, shopid: ${post.ShopId}`);
-              posts.push(post);
-            }
-
-
+      await Promise.all(items.map(async (item) => {
+        const link:string = item;
+        console.log(link);
+        const itemid:string = link.split('-i.')[1].split('.')[1];
+        const shopid:string = link.split('-i.')[1].split('.')[0];
+  
+        var post;
+        if(itemid!=undefined && shopid!=undefined){
+          
+          console.log(`itemid: ${itemid}, shopid: ${shopid}`);
+    
+          const r = await window.fetch(
+            `https://shopee.tw/api/v2/item/get?itemid=${itemid}&shopid=${shopid}`,
+            {
+              method: "GET",
+              headers: new Headers({ "User-Agent": "Googlebot" }),
+            });
+          if(r.ok){
+            const body = await r.json()
+            post = this.fromJson(body['item']);
+            post = {...post, Detail:post.Detail.replace(' ', '').slice(0, 600), PostId:v4.generate()}
+            console.log(`ok!  ...  itemid: ${post.ItemId}, shopid: ${post.ShopId}`);
+            // console.log({post});
+            posts.push(post);
           }
-
+    
+    
         }
+
+      })) 
+
+      //   items.forEach( async (item)=>{
+        
+      //   const link:string = item;
+      //   console.log(link);
+      //   const itemid:string = link.split('-i.')[1].split('.')[1];
+      //   const shopid:string = link.split('-i.')[1].split('.')[0];
+      //   if(itemid!=undefined && shopid!=undefined){
+
+      //     console.log(`itemid: ${itemid}, shopid: ${shopid}`);
+
+      //     const r = await window.fetch(
+      //       `https://shopee.tw/api/v2/item/get?itemid=${itemid}&shopid=${shopid}`,
+      //       {
+      //         method: "GET",
+      //         headers: new Headers({ "User-Agent": "Googlebot" }),
+      //       });
+      //     if(r.ok){
+      //       const body = await r.json()
+      //       var post:Post = await this.fromJson(body['item']);
+      //       post = {...post, Detail:post.Detail.replace(' ', '').slice(0, 600), PostId:v4.generate()}
+      //       console.log(`ok!  ...  itemid: ${post.ItemId}, shopid: ${post.ShopId}`);
+      //       // console.log({post});
+      //       posts.push(post);
+      //     }
+
+
+      //   }
+
+      // });
+    
+        // for (var i=0;i<items.length;i++) {
+        //   // console.log(items[i]);
+        //   const link:string = items[i];
+        //   console.log(link);
+        //   const itemid:string = link.split('-i.')[1].split('.')[1];
+        //   const shopid:string = link.split('-i.')[1].split('.')[0];
+        //   if(itemid!=undefined && shopid!=undefined){
+
+        //     console.log(`itemid: ${itemid}, shopid: ${shopid}`);
+
+        //     const r = await window.fetch(
+        //       `https://shopee.tw/api/v2/item/get?itemid=${itemid}&shopid=${shopid}`,
+        //       {
+        //         method: "GET",
+        //         headers: new Headers({ "User-Agent": "Googlebot" }),
+        //       });
+        //     if(r.ok){
+        //       const body = await r.json()
+        //       var post:Post = await this.fromJson(body['item']);
+        //       post = {...post, Detail:post.Detail.replace(' ', '').slice(0, 600), PostId:v4.generate()}
+        //       console.log(`ok!  ...  itemid: ${post.ItemId}, shopid: ${post.ShopId}`);
+        //       posts.push(post);
+        //     }
+
+
+        //   }
+
+        // }
 
     return posts;
   }
@@ -156,7 +218,7 @@ class ShopeeService {
   };
 
 
-  fromJson:any = async (json:any) => {
+  fromJson = (json:any) => {
     return {      
       ItemId: json['itemid'],
       ShopId: json['shopid'],

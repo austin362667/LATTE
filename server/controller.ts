@@ -187,8 +187,9 @@ class Controller {
            if(result.type === 'form-data'){
              obj = await result.value.read()
            }
-           const word:string = obj.fields.term;
-           console.log(word)
+           const word:string = obj.fields.term.toLowerCase().replace(' ', '');
+
+           console.log(`User search term = ${word}`)
 
     var keywordData:Keyword[];
     var keyword:Keyword;
@@ -199,6 +200,7 @@ class Controller {
       //Not firt search
       keyword = keywordData[0];
       console.log({keyword});
+      const updateSearchCount = keyword.SearchCount+1;
 
       if(await Shopee.checkNeedUpdate(keyword.LastSearchTime)){
         //Old enough to update, then update Keyword Table
@@ -206,6 +208,7 @@ class Controller {
         
         for(var i=0; i<posts.length;i++){
           const checkPost = await Shopee.getPostByItemIdAndShopId(posts[i].ItemId, posts[i].ShopId);
+          console.log(`checkPost.length = ${checkPost.length}`);
           if(checkPost.length === 0){
             await Shopee.createPost(posts[i]);
             const feed:Feed = {KeywordId:keyword.KeywordId,PostId:posts[i].PostId}
@@ -213,15 +216,14 @@ class Controller {
           }
         }
 
-        var avgPrice = 0.0;
-        for(var i=0; i<posts.length;i++){
-          avgPrice+=posts[i].Price;
-        }
+        // var avgPrice = 0.0;
+        // for(var i=0; i<posts.length;i++){
+        //   avgPrice+=posts[i].Price;
+        // }
   
         // const keywordId = v4.generate();
         const currentTime:number = new Date().getTime();
-        const updateSearchCount = keyword.SearchCount+1
-        const updateKeyword:Keyword = {...keyword, SearchCount:updateSearchCount,AvgPrice:avgPrice,LastSearchTime:currentTime};
+        const updateKeyword:Keyword = {...keyword, SearchCount:updateSearchCount,LastSearchTime:currentTime};
         await Shopee.updateKeyword(updateKeyword);
 
         posts = await Shopee.getFeedPosts(keyword.KeywordId);
@@ -229,6 +231,8 @@ class Controller {
 
       }else{
         //Just get feed because it's newly generated
+        const updateKeyword:Keyword = {...keyword, SearchCount:updateSearchCount};
+        await Shopee.updateKeyword(updateKeyword);
         posts = await Shopee.getFeedPosts(keyword.KeywordId);
       }
     }else{
@@ -236,32 +240,27 @@ class Controller {
 
       const keywordId = v4.generate();
       const currentTime:number = new Date().getTime();
+      keyword = { KeywordId:keywordId, Content:word, SearchCount:1,LastSearchTime:currentTime};
+      await Shopee.createKeyword(keyword);
+      console.log({keyword});
 
 
       posts = await Shopee.fetchShopeeData(word);
-      console.log(posts.length);
+      console.log(`posts.length  = ${posts.length}`);
       for(var i=0; i<posts.length;i++){
-        const checkPost = await Shopee.getPostByItemIdAndShopId(posts[i].ItemId, posts[i].ShopId);
-        if(checkPost.length === 0){
         await Shopee.createPost(posts[i]);
-        console.log(posts[i].Title);
-        const feed:Feed = {KeywordId:keywordId,PostId:posts[i].PostId}
+        console.log(`Write into db = ${posts[i].Title}`);
+        const feed:Feed = {KeywordId:keyword.KeywordId,PostId:posts[i].PostId}
         await Shopee.createFeed(feed);
-        console.log(feed.PostId);
-        }
+        console.log(feed);
       }
 
-      var avgPrice = 0.0;
-      for(var i=0; i<posts.length;i++){
-        avgPrice+=(posts[i].Price/100000.0);
-      }
-      console.log(avgPrice);
-      keyword = { KeywordId:keywordId, Content:word, SearchCount:1,AvgPrice:avgPrice,LastSearchTime:currentTime};
-      await Shopee.createKeyword(keyword);
-      console.log(keyword.KeywordId);
-      console.log(keyword.Content);
-      console.log(keyword.SearchCount);
-      console.log(keyword.LastSearchTime);
+      // var avgPrice = 0.0;
+      // for(var i=0; i<posts.length;i++){
+      //   avgPrice+=(posts[i].Price/100000.0);
+      // }
+      // console.log(avgPrice);
+
       posts = await Shopee.getFeedPosts(keyword.KeywordId);
       console.log(posts.length);
 

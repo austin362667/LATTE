@@ -6,7 +6,7 @@
 
 .container {
 	display: grid;
-	grid-template-columns: repeat(1, 1fr);
+	grid-template-columns: repeat(2, 1fr);
 	justify-items: center;
 	grid-gap: 20px;
 	margin: auto;
@@ -31,7 +31,7 @@
 	flex-direction: column;
 	/* align-items: start; */
 	padding: 20px;
-	min-height: 250px;
+	max-height: 350px;
 }
 
 .card-body h4 {
@@ -48,8 +48,15 @@
 .card-body p {
     color: inherit;
 	font-size: 13px;
-	margin: 0 0 40px;
+    margin: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
+.card-body:hover {
+    overflow: visible;
+  }
 
 .tag {
 	background-color: #fff;
@@ -65,12 +72,16 @@
 	background-color: #92d4e4;
 }
 
+.tag-green {
+	background-color: #96f8a6;
+}
+
 .tag-purple {
-	background-color: #3d1d94;
+	background-color: #946dff;
 }
 
 .tag-pink {
-	background-color: #c62bcb;
+	background-color: #fd96e4;
 }
 
 .user {
@@ -86,7 +97,7 @@
 }
 
 .user-info a {
-    font-size: large;
+    font-size: 1rem;
 	margin: 0;
 }
 

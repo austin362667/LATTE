@@ -6,8 +6,8 @@ interface Post {
   Price: number;
   SoldCount:  number;
   ViewCount:  number;
-  ItemId: number
-  ShopId: number;
+  ItemId: string
+  ShopId: string;
   Image: string;
   // createdAt: Date;
   // updatedAt: Date;

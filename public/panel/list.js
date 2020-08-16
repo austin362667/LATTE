@@ -1,6 +1,7 @@
 const list = {};
 
 list.html = `
+<h4 id="avgPrice"></h4>
 <div class="list">
     <div class="container" id="postList">
     </div>
@@ -35,6 +36,7 @@ list.title = async function () {
   // console.log(posts.data[0].name)
 
   res.ok ? tool.show(list.html) : tool.show(`<p> Error! </p>`);
-
-  await tool.listShow(posts.data);
+  const avgPrice = tool.avgPrice(posts.data);
+  tool.listShow(posts.data,avgPrice);
+  tool.one("#avgPrice").innerHTML = `${term} 行情: ${avgPrice}元`;
 };

@@ -95,6 +95,12 @@ header.inner {
   box-shadow: var(--box-shadow);
 }
 
+h4 {
+color: red;
+text-align: center;
+border: none;
+}
+
 /* Buttons */
 .btn {
   color: #fff;
@@ -139,17 +145,22 @@ header.inner {
   text-align: center;
 }
 
-.search-form #searchbtn {
+
+
+.search-form a {
   background: var(--primary-color);
-  border: 1px solid var(--primary-color);
-  color: #fff;
+  border: none;
   padding: 0 2rem;
   cursor: pointer;
   transition: all 0.8s;
   text-align: center;
 }
+.search-form a i{
+color: #fff;
+}
 
-.search-form #searchbtn:hover {
+
+.search-form a:hover {
   background: var(--primary-hover-color);
 }
 
@@ -306,9 +317,9 @@ label {
     flex-basis: 0;
   }
 
-  .search-form i {
+  /* .search-form i {
     display: none;
-  }
+  } */
 
   .form-wrap {
     padding: 1rem 2rem 2rem;
