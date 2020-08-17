@@ -40,8 +40,9 @@ app.use(async (ctx: any, next) => {
   
   if(!ctx.request.secure) {
     return ctx.response.redirect('https://lattemall.company/');
+  } else {
+    next();
   }
-  next();
 
 });
 app.use(router.routes());
