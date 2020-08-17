@@ -39,8 +39,7 @@ const app = new Application();
 app.use(async (ctx: any, next) => {
   
   if(!ctx.request.secure) {
-
-    return ctx.response.redirect(['https://lattemall.company/', ctx.request.url.pathname].join());
+    return ctx.response.redirect('https://lattemall.company/');
   }
   next();
 
