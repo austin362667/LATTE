@@ -36,14 +36,11 @@ router
 
 const __dirname = new URL('.', import.meta.url).pathname;
 const app = new Application();
-app.use(async (ctx: any, next) => {
-  
+app.use(async (ctx: any) => {
   if(!ctx.request.secure) {
-    return ctx.response.redirect('https://lattemall.company/');
-  } else {
-    next();
-  }
 
+    return ctx.response.redirect(['https://lattemall.company/', ctx.request.url.pathname].join());
+  }
 });
 app.use(router.routes());
 app.use(router.allowedMethods());
@@ -54,31 +51,37 @@ app.use(async (ctx: any) => {
     index: "index.html",
   });
 });
-app.use(async (context, next) => {
-  try {
-    await next();
-  } catch (err) {
-    if (isHttpError(err)) {
-      switch (err.status) {
-        // case Status.NotFound:
-        //   console.log("Handle NotFound statuses : ");
-        //   console.log(err);
-        //   break;
-        default:
-          console.log("Handle other statuses : ");
-          console.log(err);
-          // handle other statuses
-      }
-    } else {
-      console.log("Rethrow if you can't handle the error : ");
-      console.log(err);
-      // rethrow if you can't handle the error
-      throw err;
-    }
-  }
+// app.use(async (context, next) => {
+//   try {
+//     await next();
+//   } catch (err) {
+//     if (isHttpError(err)) {
+//       switch (err.status) {
+//         // case Status.NotFound:
+//         //   console.log("Handle NotFound statuses : ");
+//         //   console.log(err);
+//         //   break;
+//         default:
+//           console.log("Handle other statuses : ");
+//           console.log(err);
+//           // handle other statuses
+//       }
+//     } else {
+//       console.log("Rethrow if you can't handle the error : ");
+//       console.log(err);
+//       // rethrow if you can't handle the error
+//       throw err;
+//     }
+//   }
+// });
+
+app.addEventListener("listen", ({ hostname, port, secure }) => {
+  console.log(
+    `Listening on: ${secure ? "https://" : "http://"}${
+      hostname ?? "localhost"
+    }:${port}`
+  );
 });
-
-
 
 app.addEventListener("error", (evt) => {
   console.log(`Error Event : ${evt.error}`);
