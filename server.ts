@@ -36,12 +36,12 @@ router
 
 const __dirname = new URL('.', import.meta.url).pathname;
 const app = new Application();
-app.use(async (ctx: any) => {
-  if(!ctx.request.secure) {
+// app.use(async (ctx: any) => {
+//   if(!ctx.request.secure) {
 
-    return ctx.response.redirect(['https://lattemall.company/', ctx.request.url.pathname].join());
-  }
-});
+//     return ctx.response.redirect(['https://lattemall.company/', ctx.request.url.pathname].join());
+//   }
+// });
 app.use(router.routes());
 app.use(router.allowedMethods());
 app.use(async (ctx: any) => {
