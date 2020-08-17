@@ -36,6 +36,15 @@ router
 
 const __dirname = new URL('.', import.meta.url).pathname;
 const app = new Application();
+app.use(async (ctx: any, next) => {
+  
+  if(!ctx.request.secure) {
+
+    return ctx.response.redirect(['https://lattemall.company/', ctx.request.url.pathname].join());
+  }
+  next();
+
+});
 app.use(router.routes());
 app.use(router.allowedMethods());
 app.use(async (ctx: any) => {
@@ -69,15 +78,7 @@ app.use(async (context, next) => {
   }
 });
 
-app.use(async (ctx: any, next) => {
-  
-  if(!ctx.request.secure) {
 
-    return ctx.response.redirect(['https://', ctx.request.url.host, ctx.request.url.pathname].join());
-  }
-  next();
-
-});
 
 app.addEventListener("error", (evt) => {
   console.log(`Error Event : ${evt.error}`);
