@@ -26,7 +26,7 @@ const routerHttp = new Router();
 routerHttp
   .get('*', function(ctx) {  
     
-    ctx.response.redirect('https://lattemall.company' + ctx.request.url);
+    ctx.response.redirect('https://lattemall.company/');
 
   // Or, if you don't want to automatically detect the domain name from the request header, you can hard code it:
   // res.redirect('https://example.com' + req.url);
