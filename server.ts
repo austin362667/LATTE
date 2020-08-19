@@ -14,14 +14,14 @@ const options = {
 
 
 const Application = oak.Application;
-const Router = oak.Router;
+// const Router = oak.Router;
 // const isHttpError = oak.isHttpError;
 // const Status = oak.Status;
 const send = oak.send;
 const Ctr = new Controller();
 
-const router = new Router();
-const routerHttp = new Router();
+const router = new oak.Router();
+const routerHttp = new oak.Router();
 
 routerHttp
   .get('*', function(ctx:any) {  
