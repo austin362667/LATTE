@@ -131,7 +131,7 @@ wss.on("connection", function (ws: WebSocket) {
 
   await app.listen(options);
 
-  await appHttp.listen(80);
+  await appHttp.listen({port: 80});
 };
 
 main();
