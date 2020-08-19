@@ -25,8 +25,8 @@ const routerHttp = new Router();
 
 routerHttp
   .get('/', (ctx:any) => { 
-    ctx.response.headers.set(301, { "Location": 'https://lattemall.company/' })
-    // ctx.response.redirect('https://lattemall.company/');
+    // ctx.response.headers.set(301, { "Location": 'https://lattemall.company/' })
+    ctx.response.redirect('https://lattemall.company/');
   })
 router
   .post("/api/v1.0/user/profile", Ctr.profile)
@@ -95,7 +95,19 @@ app.addEventListener("listen", ({ hostname, port, secure }) => {
   );
 });
 
+appHttp.addEventListener("listen", ({ hostname, port, secure }) => {
+  console.log(
+    `Listening on: ${secure ? "https://" : "http://"}${
+      hostname ?? "localhost"
+    }:${port}`
+  );
+});
+
 app.addEventListener("error", (evt) => {
+  console.log(`Error Event : ${evt.error}`);
+});
+
+appHttp.addEventListener("error", (evt) => {
   console.log(`Error Event : ${evt.error}`);
 });
 
