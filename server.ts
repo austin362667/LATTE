@@ -21,14 +21,17 @@ const send = oak.send;
 const Ctr = new Controller();
 
 const router = new Router();
-router
-  // .get('*', function(ctx) {  
-    
-  //   ctx.redirect('https://' + ctx.request.headers.host + ctx.request.url);
+const routerHttp = new Router();
 
-  // // Or, if you don't want to automatically detect the domain name from the request header, you can hard code it:
-  // // res.redirect('https://example.com' + req.url);
-  // })
+routerHttp
+  .get('*', function(ctx) {  
+    
+    ctx.redirect('https://' + ctx.request.headers.host + ctx.request.url);
+
+  // Or, if you don't want to automatically detect the domain name from the request header, you can hard code it:
+  // res.redirect('https://example.com' + req.url);
+  })
+router
   .post("/api/v1.0/user/profile", Ctr.profile)
   .post("/api/v1.0/user/login", Ctr.login)
   .post("/api/v1.0/user/logout", Ctr.logout)
@@ -53,9 +56,9 @@ const appHttp = new Application();
 //   }
 // });
 app.use(router.routes());
-appHttp.use(router.routes());
+appHttp.use(routerHttp.routes());
 app.use(router.allowedMethods());
-appHttp.use(router.allowedMethods());
+appHttp.use(routerHttp.allowedMethods());
 app.use(async (ctx: any) => {
 
   await send(ctx, ctx.request.url.pathname, {
@@ -126,12 +129,9 @@ wss.on("connection", function (ws: WebSocket) {
   console.log("Server Up!");
   console.log(__dirname)
 
-  app.listen(options);
+  await app.listen(options);
 
-  appHttp(function ({req, res}) {
-    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
-    res.end();
-}).listen(80);
+  await appHttp.listen(80);
 };
 
 main();
