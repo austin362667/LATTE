@@ -24,7 +24,7 @@ const router = new Router();
 const routerHttp = new Router();
 
 routerHttp
-  .get('/', function(ctx:any) {  
+  .get('/', (ctx:any) => { 
     ctx.response.headers.set(301, { "Location": 'https://lattemall.company/' })
     // ctx.response.redirect('https://lattemall.company/');
   })
