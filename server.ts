@@ -5,7 +5,7 @@ import { WebSocket, WebSocketServer } from "https://deno.land/x/websocket/mod.ts
 
 
 const options = {
-  // secure: true,
+  secure: true,
   port: 443,
   // port: 80,
   certFile: "/etc/letsencrypt/live/lattemall.company/fullchain.pem",
@@ -121,7 +121,8 @@ wss.on("connection", function (ws: WebSocket) {
 
   console.log("Server Up!");
   console.log(__dirname)
-  app.listen(options);
+  await app.listen(options);
+  await app.listen({port: 80});
 };
 
 main();
