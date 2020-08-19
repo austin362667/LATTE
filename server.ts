@@ -45,6 +45,7 @@ router
 
 const __dirname = new URL('.', import.meta.url).pathname;
 const app = new Application();
+const appHttp = new Application();
 // app.use(async (ctx: any) => {
 //   if(!ctx.request.secure) {
 
@@ -52,7 +53,9 @@ const app = new Application();
 //   }
 // });
 app.use(router.routes());
+appHttp.use(router.routes());
 app.use(router.allowedMethods());
+appHttp.use(router.allowedMethods());
 app.use(async (ctx: any) => {
 
   await send(ctx, ctx.request.url.pathname, {
@@ -122,8 +125,13 @@ wss.on("connection", function (ws: WebSocket) {
 
   console.log("Server Up!");
   console.log(__dirname)
-  await app.listen({port: 80});
-  await app.listen(options);
+
+  app.listen(options);
+
+  appHttp(function ({req, res}) {
+    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+    res.end();
+}).listen(80);
 };
 
 main();
