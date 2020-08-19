@@ -122,7 +122,7 @@ wss.on("connection", function (ws: WebSocket) {
   console.log("Server Up!");
   console.log(__dirname)
   await app.listen(options);
-  await app.listen({port: 80});
+  // await app.listen({port: 80});
 };
 
 main();
