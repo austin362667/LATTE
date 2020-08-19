@@ -15,8 +15,8 @@ const options = {
 
 const Application = oak.Application;
 const Router = oak.Router;
-const isHttpError = oak.isHttpError;
-const Status = oak.Status;
+// const isHttpError = oak.isHttpError;
+// const Status = oak.Status;
 const send = oak.send;
 const Ctr = new Controller();
 
@@ -24,12 +24,8 @@ const router = new Router();
 const routerHttp = new Router();
 
 routerHttp
-  .get('*', function(ctx) {  
-    
+  .get('*', function(ctx:any) {  
     ctx.response.redirect('https://lattemall.company/');
-
-  // Or, if you don't want to automatically detect the domain name from the request header, you can hard code it:
-  // res.redirect('https://example.com' + req.url);
   })
 router
   .post("/api/v1.0/user/profile", Ctr.profile)
