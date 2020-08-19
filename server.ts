@@ -22,6 +22,13 @@ const Ctr = new Controller();
 
 const router = new Router();
 router
+  // .get('*', function(ctx) {  
+    
+  //   ctx.redirect('https://' + ctx.request.headers.host + ctx.request.url);
+
+  // // Or, if you don't want to automatically detect the domain name from the request header, you can hard code it:
+  // // res.redirect('https://example.com' + req.url);
+  // })
   .post("/api/v1.0/user/profile", Ctr.profile)
   .post("/api/v1.0/user/login", Ctr.login)
   .post("/api/v1.0/user/logout", Ctr.logout)
@@ -33,13 +40,7 @@ router
   .get('/chat', chatView)
   // .get('/ws', handleSocket);
   // set up a route to redirect http to https
-//   .get('*', function(ctx) {  
-  
-//     ctx.redirect('https://' + ctx.request.headers.host + ctx.request.url);
 
-//   // Or, if you don't want to automatically detect the domain name from the request header, you can hard code it:
-//   // res.redirect('https://example.com' + req.url);
-// })
 
 
 const __dirname = new URL('.', import.meta.url).pathname;
@@ -122,7 +123,7 @@ wss.on("connection", function (ws: WebSocket) {
   console.log("Server Up!");
   console.log(__dirname)
   await app.listen(options);
-  // await app.listen({port: 80});
+  await app.listen({port: 80});
 };
 
 main();
