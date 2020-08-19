@@ -25,7 +25,8 @@ const routerHttp = new Router();
 
 routerHttp
   .get('/', function(ctx:any) {  
-    ctx.response.redirect('https://lattemall.company/');
+    ctx.response.headers.set(301, { "Location": 'https://lattemall.company/' })
+    // ctx.response.redirect('https://lattemall.company/');
   })
 router
   .post("/api/v1.0/user/profile", Ctr.profile)
