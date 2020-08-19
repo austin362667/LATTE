@@ -14,17 +14,17 @@ const options = {
 
 
 const Application = oak.Application;
-// const Router = oak.Router;
+const Router = oak.Router;
 // const isHttpError = oak.isHttpError;
 // const Status = oak.Status;
 const send = oak.send;
 const Ctr = new Controller();
 
-const router = new oak.Router();
-const routerHttp = new oak.Router();
+const router = new Router();
+const routerHttp = new Router();
 
 routerHttp
-  .get('*', function(ctx:any) {  
+  .get('/', function(ctx:any) {  
     ctx.response.redirect('https://lattemall.company/');
   })
 router
