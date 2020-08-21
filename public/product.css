@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap');
 
-* {
+/* * {
 	box-sizing: border-box;
-}
+} */
 
 .container {
 	display: grid;
@@ -27,7 +27,7 @@
 }
 
 .card-body {
-	/* display: flex; */
+	display: flex;
 	flex-direction: column;
 	/* align-items: start; */
 	padding: 20px;
