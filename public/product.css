@@ -21,7 +21,7 @@
 	box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     overflow-x: hidden;
     position: relative;
-    width: 50vw;
+    width: 50%;
     /* width: 85%; */
     /* height: fit-content; */
 }
