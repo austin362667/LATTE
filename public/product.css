@@ -6,7 +6,7 @@
 
 html,
 body {
-    position: relative;
+    position: fixed;
     height: 100%;
 }
 .container {
