@@ -4,11 +4,6 @@
 	box-sizing: border-box;
 } */
 
-html,
-body {
-    position: fixed;
-    height: 100%;
-}
 .container {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -16,6 +11,8 @@ body {
     flex-direction: column;
 	grid-gap: 20px;
     margin: auto;
+    position: relative;
+    height: 100%;
 }
 
 .card {
