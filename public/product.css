@@ -6,7 +6,7 @@
 
 .list {
 
-    position: inherit;
+    position: relative;
 }
 .container {
 	display: grid;
