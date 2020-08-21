@@ -9,8 +9,8 @@ html {
   }
 
 body {
-    overflow: hidden;
-    position: fixed;
+    overflow-y: hidden;
+    position: relative;
     box-sizing: border-box;
     margin: 0;
     height: 100%;
