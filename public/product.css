@@ -1,15 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap');
 
-html {
-    overflow: hidden;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    border: none;
-  }
 
 body {
-    overflow-y: hidden;
     position: relative;
     box-sizing: border-box;
     margin: 0;
