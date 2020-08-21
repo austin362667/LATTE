@@ -10,7 +10,7 @@ html {
 
 body {
     overflow: hidden;
-    position: relative;
+    position: fixed;
     box-sizing: border-box;
     margin: 0;
     height: 100%;
