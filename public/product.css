@@ -10,7 +10,7 @@
 	justify-items: center;
 	grid-gap: 20px;
     margin: auto;
-    position: absolute;
+    position: relative;
 }
 
 .card {
