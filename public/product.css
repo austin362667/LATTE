@@ -1,12 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap');
 
-
-body {
-    position: relative;
-    box-sizing: border-box;
-    margin: 0;
-    height: 100%;
-  }
+* {
+	box-sizing: border-box;
+}
 
 .container {
 	display: grid;
@@ -21,7 +17,7 @@ body {
 	border-radius: 10px;
 	box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    /* position:relative; */
+    position: fixed;
     width: 85%;
 }
 
