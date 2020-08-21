@@ -30,7 +30,7 @@
 
 .card-body {
 	/* display: flex; */
-	flex-direction: column;
+	/* flex-direction: column; */
 	/* align-items: start; */
 	padding: 20px;
 	max-height: 350px;
@@ -108,13 +108,17 @@
 }
 
 @media (max-width: 500px) {
-	.container {
+	/* .container {
         grid-template-columns: repeat(1, 1fr);
-    }
-    .card {
-        width: 80%;
-    }
-}
+    } */
+    /* .card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        position: relative;
+        width: 85%;
+    } */
 
 
 
