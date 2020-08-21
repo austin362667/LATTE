@@ -5,7 +5,8 @@
 } */
 
 .list {
-    position: absolute;
+
+    position: inherit;
 }
 .container {
 	display: grid;
