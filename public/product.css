@@ -1,8 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap');
 
-* {
-	box-sizing: border-box;
-}
+html {
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+body {
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    margin: 0;
+    height: 100%;
+  }
 
 .container {
 	display: grid;
@@ -17,7 +29,7 @@
 	border-radius: 10px;
 	box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    position:relative;
+    /* position:relative; */
     width: 85%;
 }
 
