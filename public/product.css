@@ -4,9 +4,11 @@
 	box-sizing: border-box;
 } */
 
-.list {
-
+html,
+body {
+    overflow: hidden;
     position: relative;
+    height: 100%;
 }
 .container {
 	display: grid;
