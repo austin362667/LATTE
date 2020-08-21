@@ -4,14 +4,16 @@
 	box-sizing: border-box;
 } */
 
+.list {
+    position: absolute;
+}
 .container {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
     justify-items: center;
-    /* flex-direction: column; */
+    flex-direction: column;
 	grid-gap: 20px;
-    /* margin: auto; */
-    /* position: absolute; */
+    margin: auto;
 }
 
 .card {
