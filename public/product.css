@@ -10,9 +10,9 @@
     justify-items: center;
     /* flex-direction: column; */
 	grid-gap: 20px;
-    margin: auto;
+    /* margin: auto; */
     /* position: relative; */
-    height: 100%;
+    /* height: 100%; */
 }
 
 .card {
