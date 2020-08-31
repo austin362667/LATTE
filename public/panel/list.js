@@ -2,9 +2,7 @@ const list = {};
 
 list.html = `
 <h4 id="avgPrice"></h4>
-<div class="list">
-    <div class="container" id="postList">
-    </div>
+<div class="container" id="postList">
 </div>
 `;
 
