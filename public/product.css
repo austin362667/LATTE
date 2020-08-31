@@ -19,8 +19,8 @@
 	background-color: #fff;
 	border-radius: 10px;
 	box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-    overflow-x: hidden;
-    position: relative;
+    overflow: hidden;
+    /* position: relative; */
     /* width: 500vw; */
     width: 90%;
     /* height: fit-content; */
