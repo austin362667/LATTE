@@ -64,10 +64,10 @@ tool.postShow = async function (da_i) {
   card_body.className = "card-body";
   var groups = document.createElement("span");
   groups.className = "tag tag-teal";
-  if(da_i.groups[0]==='a'){
+  if(da_i.groups[0]==='美' || da_i.groups[0]==='穿'){
     groups.className = "tag tag-pink";
   }
-  if(da_i.groups[0]==='f'){ 
+  if(da_i.groups[0]==='科' || da_i.groups[0]==='娛'){ 
     groups.className = "tag tag-purple";
   }
 
@@ -104,6 +104,7 @@ tool.postShow = async function (da_i) {
     title.innerHTML = titleText;
     detail.innerHTML = detailText;
     price.innerHTML = priceText;
+    
     user_name.innerHTML = ownerText;
     user_name.href = `${priceText}`;///chat?receiver=${ownerText}
     date.innerHTML = dateText;
@@ -112,6 +113,8 @@ tool.postShow = async function (da_i) {
     card_body.appendChild(title)
     card_body.appendChild(detail)
     // card_body.appendChild(price)
+    user.style = "text-decoration:none";
+    user.target="_blank";
     card_body.appendChild(user)
 
     user.appendChild(user_img)
