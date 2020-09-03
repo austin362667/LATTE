@@ -99,13 +99,13 @@ tool.postShow = async function (da_i) {
     detail.innerHTML = detailText;
     price.innerHTML = priceText;
     user_name.innerHTML = ownerText;
-    user_name.href = `/chat?receiver=${ownerText}`;
+    user_name.href = `${priceText}`;///chat?receiver=${ownerText}
     date.innerHTML = dateText;
 
     card_body.appendChild(groups)
     card_body.appendChild(title)
     card_body.appendChild(detail)
-    card_body.appendChild(price)
+    // card_body.appendChild(price)
     card_body.appendChild(user)
 
     user.appendChild(user_img)

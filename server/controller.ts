@@ -120,11 +120,11 @@ class Controller {
     context.response.body = { "message": "success" };
   }
 
-  // async list(context:any) {
-  //   const postsDb = await Post.getAllPosts();
-  //   context.response.headers.set("Content-Type", "appilcation/json");
-  //   context.response.body = { "data": postsDb };
-  // }
+  async list(context:any) {
+    const postsDb = await Post.getAllPosts();
+    context.response.headers.set("Content-Type", "appilcation/json");
+    context.response.body = { "data": postsDb };
+  }
 
 
   // async listById(context:any) {

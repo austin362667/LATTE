@@ -5,20 +5,20 @@ post.html = `
 <h1 class="panel">Post</h1>
 <form method="post" enctype="multipart/form-data" id="postForm">
 
-  <p><label for="product">Title:</label><input type="text" name="product" id="product" /></p>
-  <p><label for="detail">Detail:</label><textarea name="detail" id="detail"></textarea></p>
-  <p><label for="price">Price:</label><input type="number" name="price" id="price" /></p>
+  <p><label for="product">就是標題:</label><input type="text" name="product" id="product" /></p>
+  <p><label for="detail">寫些內容吧:</label><textarea name="detail" id="detail"></textarea></p>
+  <p><label for="price">相關連結(非必填):</label><input type="number" name="price" id="price" /></p>
 
-  <p><label for="groups">Choose a group:</label>
+  <p><label for="groups">選擇一種分類:</label>
   <select name="groups" id="groups">
-    <option value="others">Others</option>
-    <option value="louis vuitton">Louis Vuitton</option>
-    <option value="balenciaga">Balenciaga</option>
-    <option value="gucci">Gucci</option>
-    <option value="prada">Prada</option>
-    <option value="apple">Apple</option>
-    <option value="sony">Sony</option>
-    <option value="food">Food</option>
+    <option value="其他">其他</option>
+    <option value="美妝">美妝</option>
+    <option value="穿搭">穿搭</option>
+    <option value="科技">科技</option>
+    <option value="日用">日用</option>
+    <option value="戶外">戶外</option>
+    <option value="書籍">書籍</option>
+    <option value="娛樂">娛樂</option>
   </select></p>
 
   <p><label for="photo">Photo:</label>
