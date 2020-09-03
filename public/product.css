@@ -5,7 +5,9 @@
 } */
 
 .container {
-    display: grid;
+    content: "";
+    display: table;
+    clear: both;
     gap: 1rem;
   
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -13,7 +15,7 @@
 }
 
 .card {
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     justify-content: center;
     align-items: center;
