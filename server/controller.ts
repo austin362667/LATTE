@@ -56,9 +56,9 @@ class Controller {
       const dts = uuid(12)
       const result = await context.request.body(
  {       contentTypes: {
-          json: ['application/json'],
+          // json: ['application/json'],
           form: ['multipart', 'urlencoded'],
-          text: ['text']
+          // text: ['text']
         }}
       );
       console.log(result.type)
