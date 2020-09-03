@@ -13,4 +13,14 @@ interface Post {
   // updatedAt: Date;
 }
 
-export { Post };
+interface oPost{
+  owner: string,
+  email:string,
+  groups:string,
+  product:string,
+  detail:string,
+  price:string,
+  photo:string,
+}
+
+export { Post, oPost };
