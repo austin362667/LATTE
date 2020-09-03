@@ -88,7 +88,7 @@ tool.postShow = async function (da_i) {
   const catalogText = `${da_i.groups}`;
   const detailText = `${da_i.detail}`;
   const ownerText = `${da_i.owner}`
-  const priceText = `NTD$${da_i.price}`;
+  const priceText = `${da_i.price}`;
   const dateStr = da_i.updated_at.replace(/[A-Za-z]+/g, " ").split('.')[0]
   const dateText = `${dateStr}`;
 
@@ -175,7 +175,7 @@ tool.shopeeShow = async function (da_i, avgPrice) {
   const ownerText = `https://shopee.tw/${da_i.Title}-i.${da_i.ShopId}.${da_i.ItemId}`
   const priceText = `NTD$${da_i.Price/100000.0}`;
   // const dateStr = `人氣 ${da_i.ViewCount}`//da_i.updated_at.replace(/[A-Za-z]+/g, " ").split('.')[0]
-  const dateText = `2020/08`;
+  const dateText = `2020/09`;
 
   if (
     da_i.Title === "" ||
