@@ -1,11 +1,11 @@
-import { UserService } from "./services/userService";
-import { PostService } from "./services/postService";
-import { ShopeeService } from "./services/shopeeService";
+import { UserService } from "./services/userService.ts";
+import { PostService } from "./services/postService.ts";
+import { ShopeeService } from "./services/shopeeService.ts";
 import { v4 } from "https://deno.land/std/uuid/mod.ts";
 import ShortUniqueId from 'https://cdn.jsdelivr.net/npm/short-unique-id@latest/short_uuid/mod.ts';
-import { Keyword } from "../model/keywordModel";
-import { Post } from "../model/postModel";
-import { Feed } from "../model/feedModel";
+import { Keyword } from "../model/keywordModel.ts";
+import { Post } from "../model/postModel.ts";
+import { Feed } from "../model/feedModel.ts";
 
 const User = new UserService();
 const Post = new PostService();
