@@ -7,7 +7,7 @@ post.html = `
 
   <p><label for="product">就是標題:</label><input type="text" name="product" id="product" /></p>
   <p><label for="detail">寫些內容吧:</label><textarea name="detail" id="detail"></textarea></p>
-  <p><label for="price">相關連結(非必填):</label><input type="number" name="price" id="price" /></p>
+  <p><label for="price">相關連結(非必填):</label><input type="text" name="price" id="price" /></p>
 
   <p><label for="groups">選擇一種分類:</label>
   <select name="groups" id="groups">
