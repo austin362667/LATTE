@@ -14,7 +14,7 @@ list.start = async function () {
 
   r.ok ? tool.show(list.html) : tool.show(`<p> Error! </p>`);
 
-  await tool.listShow(posts.data);
+  await tool.postListShow(posts.data);
 };
 
 
@@ -35,6 +35,6 @@ list.title = async function () {
 
   res.ok ? tool.show(list.html) : tool.show(`<p> Error! </p>`);
   const avgPrice = tool.avgPrice(posts.data);
-  tool.listShow(posts.data,avgPrice);
+  tool.shopeeListShow(posts.data,avgPrice);
   tool.one("#avgPrice").innerHTML = `${term} 行情: ${avgPrice}元`;
 };

@@ -42,9 +42,15 @@ tool.title = function (title) {
   tool.one("title").innerHTML = title;
 };
 
-tool.listShow = function (da, avgPrice) {
+tool.shopeeListShow = function (da, avgPrice) {
   for (let i = 0; i < da.length; i++) {
     tool.shopeeShow(da[i], avgPrice);
+  }
+};
+
+tool.postListShow = function (da, avgPrice) {
+  for (let i = 0; i < da.length; i++) {
+    tool.postShow(da[i], avgPrice);
   }
 };
 
