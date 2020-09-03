@@ -22,7 +22,7 @@
     /* color: #fff; */
     /* box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem; */
     /* max-width: 100%; */
-    max-width: 100%;
+    max-width: 30%;
     /* border-radius: 4px; */
     transition: all 500ms;
     /* overflow: hidden; */
@@ -33,9 +33,12 @@
     overflow: hidden;
     /* position: relative; */
     /* width: 500vw; */
-    /* width: 90%; */
+    float: left;
+    width: 40%;
+    padding: 10px;
+    height: 70%;
     /* height: fit-content; */
-    height: 100vw;
+    /* height: 100vw; */
     
 }
 
