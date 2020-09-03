@@ -1,6 +1,6 @@
-import { oak } from "./lib.ts";
-import { Controller } from "./server/controller.ts";
-import { chatView } from './chat.ts';
+import { oak } from "./lib";
+import { Controller } from "./server/controller";
+import { chatView } from './chat';
 import { WebSocket, WebSocketServer } from "https://deno.land/x/websocket/mod.ts";
 
 
