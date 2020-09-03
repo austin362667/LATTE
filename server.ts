@@ -1,7 +1,7 @@
 import { oak } from "./lib";
 import { Controller } from "./server/controller";
 import { chatView } from './chat';
-import { WebSocket, WebSocketServer } from "https://deno.land/x/websocket/mod.ts";
+// import { WebSocket, WebSocketServer } from "https://deno.land/x/websocket/mod.ts";
 
 
 const options = {
@@ -37,7 +37,7 @@ router
   .post("/api/v1.0/post/list/title", Ctr.shopeeSearch)
   .post("/api/v1.0/post/upload", Ctr.upload)
   // .post("/api/v1.0/post/list/id", Ctr.listById)
-  .get('/chat', chatView)
+  // .get('/chat', chatView)
   // .get('/ws', handleSocket);
   // set up a route to redirect http to https
 
@@ -115,24 +115,24 @@ appHttp.addEventListener("error", (evt) => {
 const main = async function () {
 
 // websocket serve
-const wss = new WebSocketServer(8080);
-wss.on("connection", function (ws: WebSocket) {
+// const wss = new WebSocketServer(8080);
+// wss.on("connection", function (ws: WebSocket) {
 
-	ws.on("message", function (message: string) {
+// 	ws.on("message", function (message: string) {
 
-		console.log(message);
-		//ws.send(message);
+// 		console.log(message);
+// 		//ws.send(message);
 
-		// broadcast message
-		wss.clients.forEach(function each(client) {
-			if (!client.isClosed) {
-				client.send(message);
-			}
-		});
+// 		// broadcast message
+// 		wss.clients.forEach(function each(client) {
+// 			if (!client.isClosed) {
+// 				client.send(message);
+// 			}
+// 		});
 
-	});
+// 	});
 
-});
+// });
 
 
   console.log("Server Up!");

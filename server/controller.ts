@@ -1,5 +1,5 @@
 import { UserService } from "./services/userService";
-// import { PostService } from "./services/postService.ts";
+import { PostService } from "./services/postService";
 import { ShopeeService } from "./services/shopeeService";
 import { v4 } from "https://deno.land/std/uuid/mod.ts";
 import ShortUniqueId from 'https://cdn.jsdelivr.net/npm/short-unique-id@latest/short_uuid/mod.ts';
@@ -8,7 +8,7 @@ import { Post } from "../model/postModel";
 import { Feed } from "../model/feedModel";
 
 const User = new UserService();
-// const Post = new PostService();
+const Post = new PostService();
 const Shopee = new ShopeeService();
 
 class Controller {
