@@ -113,8 +113,8 @@ tool.postShow = async function (da_i) {
     card_body.appendChild(title)
     card_body.appendChild(detail)
     // card_body.appendChild(price)
-    price.style = "text-decoration:none";
-    price.target="_blank";
+    user_name.style = "text-decoration:none";
+    user_name.target="_blank";
     card_body.appendChild(user)
 
     user.appendChild(user_img)
